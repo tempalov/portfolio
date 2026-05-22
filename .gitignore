@@ -1,0 +1,26 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.vite/
+
+# environment & secrets
+.env
+.env.local
+.env.before-*
+
+# deploy artifacts
+portfolio-deploy.tar.gz
+*.tar.gz
+
+# reference / archived materials (kept locally, not for repo)
+_ref_*/
+OT Infra Design System.zip
+
+# editor / tooling
+.claude/
+.idea/
+.vscode/
+
+# OS
+Thumbs.db

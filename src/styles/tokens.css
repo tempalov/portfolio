@@ -1,0 +1,78 @@
+/* =========================================================================
+   Design tokens · brittanychiang.com clone — navy + teal
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+
+  --bg: #fcfcfd;
+  --surface: #f4f5f8;
+  --surface-2: #ebeef3;
+  --border: rgba(15, 23, 42, 0.10);
+  --border-strong: rgba(15, 23, 42, 0.20);
+
+  --text: #0f172a;
+  --text-2: #334155;
+  --muted: #64748b;
+
+  --accent: #0d9488;
+  --accent-soft: rgba(13, 148, 136, 0.08);
+  --status-dot: #16a34a;
+
+  /* Type scale */
+  --fs-hero: clamp(40px, 5vw, 56px);
+  --fs-h2: clamp(28px, 3vw, 36px);
+  --fs-h3: clamp(18px, 1.8vw, 22px);
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+
+  --lh-hero: 1.05;
+  --lh-tight: 1.2;
+  --lh-body: 1.6;
+
+  --ls-hero: -0.02em;
+  --ls-h2: -0.01em;
+  --ls-micro: 0.1em;
+  --ls-brand: 0.16em;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --page-max: 2400px;
+  --page-gutter-mobile: 24px;
+  --page-gutter-desktop: 56px;
+  --section-pad-mobile: 64px;
+  --section-pad-desktop: 96px;
+
+  --r-chip: 999px;
+  --r-button: 6px;
+  --r-card: 8px;
+
+  --t-fast: 200ms;
+  --t-med: 300ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Consolas", monospace;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0a192f;
+  --surface: #112240;
+  --surface-2: #1d2d50;
+  --border: rgba(136, 146, 176, 0.18);
+  --border-strong: rgba(136, 146, 176, 0.35);
+
+  --text: #e6f1ff;
+  --text-2: #ccd6f6;
+  --muted: #8892b0;
+
+  --accent: #64ffda;
+  --accent-soft: rgba(100, 255, 218, 0.10);
+  --status-dot: #4ade80;
+}
