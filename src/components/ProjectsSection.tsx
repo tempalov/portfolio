@@ -33,7 +33,7 @@ const AI_CASE_ICONS: LucideIcon[] = [Bot, Headphones, BarChart3];
 export function ProjectsSection({ locale, content }: Props) {
   const infra = content.caseStudies.filter((c) => c.group === "infra");
   const ai = content.caseStudies.filter((c) => c.group === "ai");
-  const eyebrow = locale === "ru" ? "Кейсы" : "Cases";
+  const eyebrow = locale === "ru" ? "Кейсы" : locale === "zh" ? "案例" : "Work";
 
   return (
     <section id="projects" className="block">

@@ -1,65 +1,34 @@
-import { Mail, Phone } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Mail, Phone, Send } from "lucide-react";
 import type { Locale, ProfileBundle } from "../data/profile";
+import { SECTIONS, useActiveSection, type SectionId } from "../hooks/useActiveSection";
 import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   locale: Locale;
-  setLocale: (l: Locale) => void;
   content: ProfileBundle;
 };
 
-const SECTIONS = ["about", "projects", "experience", "education"] as const;
-type SectionId = (typeof SECTIONS)[number];
-
-function useActiveSection(): SectionId {
-  const [active, setActive] = useState<SectionId>("about");
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const elements = SECTIONS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
-    if (elements.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) {
-          setActive(visible[0].target.id as SectionId);
-        }
-      },
-      {
-        rootMargin: "-30% 0px -60% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      },
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  return active;
-}
-
-export function Sidebar({ locale, setLocale, content }: Props) {
+export function Sidebar({ locale, content }: Props) {
   const active = useActiveSection();
 
   const navLabels: Record<SectionId, string> =
     locale === "ru"
       ? { about: "О себе", projects: "Кейсы", experience: "Опыт", education: "Курсы" }
-      : { about: "About", projects: "Cases", experience: "Experience", education: "Courses" };
+      : locale === "zh"
+        ? { about: "关于", projects: "案例", experience: "经历", education: "课程" }
+        : { about: "About", projects: "Work", experience: "Experience", education: "Education" };
 
-  const labelLight = locale === "ru" ? "Светлая тема" : "Switch to light";
-  const labelDark = locale === "ru" ? "Тёмная тема" : "Switch to dark";
+  const labelLight =
+    locale === "ru" ? "Светлая тема" : locale === "zh" ? "浅色主题" : "Light mode";
+  const labelDark =
+    locale === "ru" ? "Тёмная тема" : locale === "zh" ? "深色主题" : "Dark mode";
 
   const statusLine =
     locale === "ru"
       ? "Только удалённо · Москва · UTC+3"
-      : "Remote only · Moscow · UTC+3";
+      : locale === "zh"
+        ? "仅远程协作 · 莫斯科 · UTC+3"
+        : "Remote only · Moscow · UTC+3";
 
   return (
     <aside className="sidebar">
@@ -107,30 +76,46 @@ export function Sidebar({ locale, setLocale, content }: Props) {
           >
             <Phone size={20} strokeWidth={1.5} />
           </a>
+          <a
+            href={content.profile.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            title="Telegram: @tempalov"
+          >
+            <Send size={20} strokeWidth={1.5} />
+          </a>
         </div>
 
         <div className="sidebar-actions">
           <ThemeToggle labelLight={labelLight} labelDark={labelDark} />
-          <div className="locale-switcher" role="tablist" aria-label="Language">
-            <button
-              type="button"
+          <nav className="locale-switcher" aria-label="Language">
+            <a
+              href="/"
               className={locale === "ru" ? "locale-active" : ""}
-              onClick={() => setLocale("ru")}
-              role="tab"
-              aria-selected={locale === "ru"}
+              aria-current={locale === "ru" ? "page" : undefined}
+              hrefLang="ru"
             >
               RU
-            </button>
-            <button
-              type="button"
+            </a>
+            <a
+              href="/en/"
               className={locale === "en" ? "locale-active" : ""}
-              onClick={() => setLocale("en")}
-              role="tab"
-              aria-selected={locale === "en"}
+              aria-current={locale === "en" ? "page" : undefined}
+              hrefLang="en"
             >
               EN
-            </button>
-          </div>
+            </a>
+            <a
+              href="/zh/"
+              className={locale === "zh" ? "locale-active" : ""}
+              aria-current={locale === "zh" ? "page" : undefined}
+              hrefLang="zh-CN"
+              lang="zh-CN"
+            >
+              中
+            </a>
+          </nav>
         </div>
       </div>
     </aside>

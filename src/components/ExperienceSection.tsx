@@ -4,7 +4,7 @@ import { TimelineEntry } from "./TimelineEntry";
 type Props = { locale: Locale; content: ProfileBundle };
 
 export function ExperienceSection({ locale, content }: Props) {
-  const eyebrow = locale === "ru" ? "Опыт" : "Experience";
+  const eyebrow = locale === "ru" ? "Опыт" : locale === "zh" ? "经历" : "Experience";
 
   return (
     <section id="experience" className="block">

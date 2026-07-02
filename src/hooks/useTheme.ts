@@ -12,16 +12,22 @@ function readInitial(): Theme {
 }
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(readInitial);
+  // null until mounted: server and first client render must match (SSR hydration)
+  const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
+    setTheme(readInitial());
+  }, []);
+
+  useEffect(() => {
+    if (theme === null) return;
     document.documentElement.setAttribute("data-theme", theme);
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
   const toggle = useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => ((prev ?? readInitial()) === "light" ? "dark" : "light"));
   }, []);
 
-  return { theme, toggle };
+  return { theme: theme ?? "light", toggle };
 }
