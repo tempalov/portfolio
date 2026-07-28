@@ -25,3 +25,12 @@ OT Infra Design System.zip
 
 # OS
 Thumbs.db
+
+# инфраструктура и деплой — держим локально, в публичный репозиторий не отдаём
+Dockerfile
+.dockerignore
+compose*.yaml
+docker/
+deploy/
+.env.example
+_private/
