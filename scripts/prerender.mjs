@@ -25,6 +25,8 @@ const LOCALES = {
       name: "Олег Темпалов",
       jobTitle: "Senior SysOps · Solutions Architect",
       addressLocality: "Москва",
+      description:
+        "Архитектор IT-инфраструктуры с опытом более 12 лет. Строит корпоративную инфраструктуру с нуля (Active Directory, MS Exchange, VMware, сети MikroTik), автоматизирует процессы на Ansible, Python и PowerShell и внедряет AI-агентов в продакшен. Москва, работает только удалённо.",
       knowsAbout: [
         "IT-инфраструктура",
         "Active Directory",
@@ -49,6 +51,8 @@ const LOCALES = {
       name: "Oleg Tempalov",
       jobTitle: "Staff Infrastructure Engineer · Solutions Architect",
       addressLocality: "Moscow",
+      description:
+        "Infrastructure architect with 12+ years of experience. Builds corporate infrastructure from scratch (Active Directory, MS Exchange, VMware, MikroTik networking), automates operations with Ansible, Python and PowerShell, and ships AI agents to production. Based in Moscow, remote only.",
       knowsAbout: [
         "IT infrastructure",
         "Active Directory",
@@ -73,6 +77,8 @@ const LOCALES = {
       name: "Oleg Tempalov",
       jobTitle: "Senior SysOps · 中俄技术对接",
       addressLocality: "莫斯科",
+      description:
+        "拥有 12 年以上经验的 IT 基础设施架构师。从零搭建企业基础设施(Active Directory、MS Exchange、VMware、MikroTik 网络),使用 Ansible、Python 与 PowerShell 实现自动化,并将 AI 智能体落地到生产环境。常驻莫斯科,仅远程协作。",
       knowsAbout: [
         "IT 基础设施",
         "Active Directory",
@@ -99,23 +105,70 @@ function buildMeta(locale) {
     .filter((l) => l !== cfg)
     .map((l) => l.ogLocale);
 
+  // @graph: ProfilePage → Person → WebSite. Даёт поисковикам и AI-ассистентам
+  // связную «карточку сущности», а не разрозненные поля.
+  const personId = `${SITE}/#person`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: cfg.person.name,
-    alternateName: "Oleg Tempalov",
-    url: cfg.url,
-    image: `${SITE}/avatar.jpg`,
-    email: "mailto:oleg@tempalov.ru",
-    jobTitle: cfg.person.jobTitle,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: cfg.person.addressLocality,
-      addressCountry: "RU",
-    },
-    sameAs: ["https://github.com/tempalov", "https://t.me/tempalov"],
-    knowsAbout: cfg.person.knowsAbout,
-    knowsLanguage: ["ru", "en", "zh"],
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": `${cfg.url}#profilepage`,
+        url: cfg.url,
+        name: meta.title,
+        description: meta.description,
+        inLanguage: cfg.htmlLang,
+        mainEntity: { "@id": personId },
+        isPartOf: { "@id": `${SITE}/#website` },
+      },
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: cfg.person.name,
+        alternateName: ["Oleg Tempalov", "Олег Темпалов"],
+        description: cfg.person.description,
+        url: SITE + "/",
+        mainEntityOfPage: { "@id": `${cfg.url}#profilepage` },
+        image: `${SITE}/avatar.jpg`,
+        email: "mailto:oleg@tempalov.ru",
+        jobTitle: cfg.person.jobTitle,
+        hasOccupation: {
+          "@type": "Occupation",
+          name: cfg.person.jobTitle,
+          occupationalCategory: "15-1244.00 Network and Computer Systems Administrators",
+          skills: cfg.person.knowsAbout.join(", "),
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: cfg.person.addressLocality,
+          addressCountry: "RU",
+        },
+        workLocation: {
+          "@type": "Place",
+          name: cfg.person.addressLocality,
+        },
+        sameAs: [
+          "https://github.com/tempalov",
+          "https://t.me/tempalov",
+          "https://qna.habr.com/user/tempalov",
+          "https://habr.com/ru/users/tempalov/",
+        ],
+        knowsAbout: cfg.person.knowsAbout,
+        knowsLanguage: [
+          { "@type": "Language", name: "Russian", alternateName: "ru" },
+          { "@type": "Language", name: "English", alternateName: "en" },
+          { "@type": "Language", name: "Chinese", alternateName: "zh" },
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE}/#website`,
+        url: SITE + "/",
+        name: cfg.person.name,
+        inLanguage: cfg.htmlLang,
+        publisher: { "@id": personId },
+      },
+    ],
   };
 
   return [
