@@ -1,4 +1,4 @@
-import { Mail, Phone, Send } from "lucide-react";
+import { Github, Mail, Phone, Send } from "lucide-react";
 import type { Locale, ProfileBundle } from "../data/profile";
 import { SECTIONS, useActiveSection, type SectionId } from "../hooks/useActiveSection";
 import { ThemeToggle } from "./ThemeToggle";
@@ -79,11 +79,20 @@ export function Sidebar({ locale, content }: Props) {
           <a
             href={content.profile.telegram}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             aria-label="Telegram"
             title="Telegram: @tempalov"
           >
             <Send size={20} strokeWidth={1.5} />
+          </a>
+          <a
+            href="https://github.com/tempalov"
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub: @tempalov"
+          >
+            <Github size={20} strokeWidth={1.5} />
           </a>
         </div>
 

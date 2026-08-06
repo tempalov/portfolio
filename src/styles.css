@@ -793,8 +793,24 @@ svg {
   color: var(--accent);
 }
 
-.contact-meta {
+.contact-profiles {
   margin: 20px 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.contact-profiles a {
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-profiles a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.contact-meta {
+  margin: 10px 0 0;
   font-size: var(--fs-small);
   color: var(--muted);
 }
