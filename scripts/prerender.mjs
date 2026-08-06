@@ -23,7 +23,7 @@ const LOCALES = {
     outFile: "index.html",
     person: {
       name: "Олег Темпалов",
-      jobTitle: "Senior SysOps · Solutions Architect",
+      jobTitle: "Архитектор IT-инфраструктуры",
       addressLocality: "Москва",
       description:
         "Архитектор IT-инфраструктуры с опытом более 12 лет. Строит корпоративную инфраструктуру с нуля (Active Directory, MS Exchange, VMware, сети MikroTik), автоматизирует процессы на Ansible, Python и PowerShell и внедряет AI-агентов в продакшен. Москва, работает только удалённо.",
@@ -53,7 +53,7 @@ const LOCALES = {
     outFile: "en/index.html",
     person: {
       name: "Oleg Tempalov",
-      jobTitle: "Staff Infrastructure Engineer · Solutions Architect",
+      jobTitle: "IT Infrastructure Architect",
       addressLocality: "Moscow",
       description:
         "Infrastructure architect with 12+ years of experience. Builds corporate infrastructure from scratch (Active Directory, MS Exchange, VMware, MikroTik networking), automates operations with Ansible, Python and PowerShell, and ships AI agents to production. Based in Moscow, remote only.",
@@ -81,7 +81,7 @@ const LOCALES = {
     outFile: "zh/index.html",
     person: {
       name: "Oleg Tempalov",
-      jobTitle: "Senior SysOps · 中俄技术对接",
+      jobTitle: "IT 基础设施架构师",
       addressLocality: "莫斯科",
       description:
         "拥有 12 年以上经验的 IT 基础设施架构师。从零搭建企业基础设施(Active Directory、MS Exchange、VMware、MikroTik 网络),使用 Ansible、Python 与 PowerShell 实现自动化,并将 AI 智能体落地到生产环境。常驻莫斯科,仅远程协作。",

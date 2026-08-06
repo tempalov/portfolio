@@ -79,7 +79,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
   ru: {
     profile: {
       name: "Олег Темпалов",
-      role: "Senior SysOps",
+      role: "Архитектор IT-инфраструктуры",
       roleSubline: "Инфраструктура · Автоматизация · AI-агенты",
       email: "oleg@tempalov.ru",
       phone: "+7 (922) 222-58-00",
@@ -87,8 +87,8 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       summary:
         "Полный цикл — от серверной до AI-агентов в продакшене. Под ключ.",
       status:
-        "Открыт к ролям Solutions Architect / Head of Infrastructure. Удалённо, full-time или long-term contract. Готов к NDA-проектам.",
-      desiredRole: "Senior SysOps",
+        "Открыт к ролям архитектора инфраструктуры и Head of Infrastructure. Удалённо, full-time или долгосрочный контракт. Готов к NDA-проектам.",
+      desiredRole: "Архитектор IT-инфраструктуры",
     },
     nav: {
       projects: "Кейсы",
@@ -378,10 +378,10 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "Курсы",
       contactEyebrow: "Контакты",
       contactTitle:
-        "Если нужен Senior SysOps, который доводит сложную инфраструктуру до прода — напишите.",
+        "Если нужен архитектор, который доводит сложную инфраструктуру до прода и потом её же эксплуатирует — напишите.",
     },
     meta: {
-      title: "Олег Темпалов — Solutions Architect · Infra × Automation × AI",
+      title: "Олег Темпалов — архитектор IT-инфраструктуры",
       description:
         "12+ лет в корпоративной инфраструктуре. Solutions Architect: проектирую системы Linux/Windows на архитекторском уровне, автоматизирую бизнес-процессы агентными системами, интегрирую LLM в продакшен. Только удалённо.",
     },
@@ -389,7 +389,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
   en: {
     profile: {
       name: "Oleg Tempalov",
-      role: "Staff Infrastructure Engineer",
+      role: "IT Infrastructure Architect",
       roleSubline: "Infrastructure · Automation · AI agents",
       email: "oleg@tempalov.ru",
       phone: "+7 (922) 222-58-00",
@@ -397,8 +397,8 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       summary:
         "End-to-end infrastructure — from bare metal and networks to AI agents running in production.",
       status:
-        "Open to Staff Infrastructure Engineer or Solutions Architect roles. Remote, full-time or contract.",
-      desiredRole: "Staff Infrastructure Engineer",
+        "Open to Infrastructure Architect, Solutions Architect or Head of Infrastructure roles. Remote, full-time or contract.",
+      desiredRole: "IT Infrastructure Architect",
     },
     nav: {
       projects: "Results",
@@ -571,7 +571,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       {
         company: "Detsky Mir (large retail chain, ~30K employees)",
         logo: "https://www.google.com/s2/favicons?domain=detmir.ru&sz=64",
-        role: "Staff Infrastructure Engineer",
+        role: "Senior SysOps",
         period: "October 2023 — Present",
         location: "Moscow",
         highlights: [
@@ -689,10 +689,10 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "Education",
       contactEyebrow: "Contact",
       contactTitle:
-        "If you need a Staff Infrastructure Engineer who ships complex systems to production — drop a line.",
+        "If you need an architect who takes complex infrastructure to production and then runs it — drop a line.",
     },
     meta: {
-      title: "Oleg Tempalov — Solutions Architect · Infra × Automation × AI",
+      title: "Oleg Tempalov — IT Infrastructure Architect",
       description:
         "12+ years in corporate infrastructure. Designing Linux and Windows systems at architect level, automating business processes with agent-based systems, and shipping LLMs to production. Remote only.",
     },
@@ -700,7 +700,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
   zh: {
     profile: {
       name: "Oleg Tempalov",
-      role: "Senior SysOps · 中俄技术对接",
+      role: "IT 基础设施架构师 · 中俄技术对接",
       roleSubline: "基础设施 · 自动化 · AI 智能体 · 跨境落地",
       email: "oleg@tempalov.ru",
       phone: "+7 (922) 222-58-00",
@@ -709,7 +709,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         "从基础设施到生产级 AI 智能体,提供全链路交付。专注中俄技术对接,助力中国企业出海俄罗斯落地。",
       status:
         "面向出海俄罗斯市场的中国科技企业,提供基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。远程协作,接受全职或长期合同,可签署 NDA。",
-      desiredRole: "Senior SysOps / 跨境技术顾问",
+      desiredRole: "IT 基础设施架构师 / 跨境技术顾问",
     },
     nav: {
       projects: "案例",
@@ -1000,10 +1000,10 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "课程",
       contactEyebrow: "联系",
       contactTitle:
-        "如果您正在寻找能把复杂基础设施落地到生产环境的 Senior SysOps,或正为出海俄罗斯市场的中国企业物色本地化技术合作方,欢迎直接联系。",
+        "如果您正在寻找能把复杂基础设施落地到生产环境并长期运维的架构师,或正为出海俄罗斯市场的中国企业物色本地化技术合作方,欢迎直接联系。",
     },
     meta: {
-      title: "Oleg Tempalov — Senior SysOps · 中俄技术对接",
+      title: "Oleg Tempalov — IT 基础设施架构师 · 中俄技术对接",
       description:
         "12+ 年俄罗斯企业基础设施经验。面向出海俄罗斯市场的中国科技企业,提供基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。Linux / Windows 系统架构师级,AI 智能体驱动的业务流程自动化,生产环境 LLM 落地。仅远程协作。",
     },
