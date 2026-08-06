@@ -23,7 +23,10 @@ export type CaseStudy = {
 export type Pillar = {
   label: string;
   intro: string;
+  /** Ядро — видно всегда. Держим ~9 позиций на группу. */
   body: string;
+  /** Глубина — раскрывается по наведению или нажатию. В HTML присутствует всегда. */
+  more?: string;
 };
 
 export type ProfileBundle = {
@@ -100,19 +103,22 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           label: "Системы, Active Directory и почта",
           intro:
             "Собираю и годами держу ядро корпоративной инфраструктуры — от гипервизора до почты и единого входа.",
-          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · Postfix · Dovecot · mailcow · PMG · AD DS · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Keycloak · Zabbix · Telegraf · InfluxDB · Windows Server",
+          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
+          more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "Сети, прокси и безопасность",
           intro:
             "Связываю площадки в единый контур и держу периметр: маршрутизация, VPN, обратные прокси, анализ событий.",
-          body: "MikroTik · Ubiquiti · pfSense · OPNsense · WireGuard · OpenVPN · OSPF · IPSec · GRE · angie · nginx · HAProxy · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Wazuh · Graylog",
+          body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
+          more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "Облака и автоматизация",
           intro:
             "Всё повторяющееся — автоматизирую: облака под IaC, конфигурации в коде, сервисы в контейнерах.",
-          body: "Yandex Cloud · VK Cloud · Selectel · cloud.ru · Timeweb · Terraform · Ansible · PowerShell DSC · cloud-init · Docker · GitLab CI · Python · PowerShell · Bash · Ruby",
+          body: "Yandex Cloud · VK Cloud · Terraform · Ansible · Docker · GitLab CI · Python · PowerShell · Bash",
+          more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · Ruby",
         },
         {
           label: "AI-агенты",
@@ -407,19 +413,22 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           label: "Systems, identity and mail",
           intro:
             "I build the core of corporate infrastructure and keep it running for years — from hypervisor to mail and single sign-on.",
-          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · Postfix · Dovecot · mailcow · PMG · AD DS · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Keycloak · Zabbix · Telegraf · InfluxDB · Windows Server",
+          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
+          more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "Networking, proxies and security",
           intro:
             "I tie sites into one managed fabric and hold the perimeter: routing, VPN, reverse proxies, event analytics.",
-          body: "MikroTik · Ubiquiti · pfSense · OPNsense · WireGuard · OpenVPN · OSPF · IPSec · GRE · angie · nginx · HAProxy · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Wazuh · Graylog",
+          body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
+          more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "Cloud and automation",
           intro:
             "Anything repetitive gets automated: clouds under IaC, configs as code, services in containers.",
-          body: "Yandex Cloud · VK Cloud · Selectel · cloud.ru · Timeweb · AWS · GCP · Azure · Terraform · Ansible · PowerShell DSC · cloud-init · Docker · GitLab CI · Python · PowerShell · Bash · Ruby",
+          body: "Yandex Cloud · VK Cloud · AWS · GCP · Azure · Terraform · Ansible · Docker · Python · PowerShell",
+          more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · GitLab CI · Bash · Ruby",
         },
         {
           label: "AI agents",
@@ -715,19 +724,22 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           label: "系统、Active Directory 与邮件",
           intro:
             "搭建并长期运维企业基础设施的核心:从虚拟化平台到邮件与统一身份认证。",
-          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · Postfix · Dovecot · mailcow · PMG · AD DS · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Keycloak · Zabbix · Telegraf · InfluxDB · Windows Server",
+          body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
+          more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "网络、代理与安全",
           intro:
             "将多个站点连成统一可控的网络并守住安全边界:路由、VPN、反向代理、事件分析。",
-          body: "MikroTik · Ubiquiti · pfSense · OPNsense · WireGuard · OpenVPN · OSPF · IPSec · GRE · angie · nginx · HAProxy · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Wazuh · Graylog",
+          body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
+          more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "俄罗斯本地云与自动化",
           intro:
             "一切重复性工作皆自动化:云上 IaC、配置即代码、服务容器化。",
-          body: "Yandex Cloud · VK Cloud · Selectel · cloud.ru · Timeweb · AWS · GCP · Azure · Terraform · Ansible · PowerShell DSC · cloud-init · Docker · GitLab CI · Python · PowerShell · Bash · Ruby",
+          body: "Yandex Cloud · VK Cloud · AWS · GCP · Azure · Terraform · Ansible · Docker · Python · PowerShell",
+          more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · GitLab CI · Bash · Ruby",
         },
         {
           label: "AI 智能体",
