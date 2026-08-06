@@ -465,11 +465,11 @@ svg {
   font-size: 16px;
   color: var(--text-2);
   line-height: 1.7;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 .about-text:last-of-type {
-  margin-bottom: 32px;
+  margin-bottom: 26px;
 }
 
 .about-text a {
@@ -478,7 +478,7 @@ svg {
 }
 
 .tag-group {
-  margin-top: 32px;
+  margin-top: 22px;
 }
 
 .tag-group:first-of-type {
@@ -486,20 +486,21 @@ svg {
 }
 
 .tag-group h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: var(--fw-semibold);
   color: var(--text);
-  margin: 0 0 6px;
+  margin: 0 0 3px;
   text-transform: uppercase;
   letter-spacing: var(--ls-micro);
 }
 
+/* Подпись держим в одну строку — блок и так самый длинный на странице */
 .tag-group-intro {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.6;
-  margin: 0 0 14px;
-  max-width: 68ch;
+  line-height: 1.5;
+  margin: 0 0 9px;
+  max-width: 80ch;
 }
 
 .tag-list {

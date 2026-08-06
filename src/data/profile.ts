@@ -102,28 +102,28 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "Системы, Active Directory и почта",
           intro:
-            "Собираю и годами держу ядро корпоративной инфраструктуры — от гипервизора до почты и единого входа.",
+            "Ядро корпоративной инфраструктуры — от гипервизора до единого входа.",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "Сети, прокси и безопасность",
           intro:
-            "Связываю площадки в единый контур и держу периметр: маршрутизация, VPN, обратные прокси, анализ событий.",
+            "Связываю площадки в единый контур и держу периметр.",
           body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
           more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "Облака и автоматизация",
           intro:
-            "Всё повторяющееся — автоматизирую: облака под IaC, конфигурации в коде, сервисы в контейнерах.",
+            "Всё повторяющееся — в код: IaC, конфигурации, контейнеры.",
           body: "Yandex Cloud · VK Cloud · Terraform · Ansible · Docker · GitLab CI · Python · PowerShell · Bash",
           more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · Ruby",
         },
         {
           label: "AI-агенты",
           intro:
-            "Встраиваю LLM в рабочие процессы так, чтобы они приносили пользу в проде, а не в презентациях.",
+            "Встраиваю LLM так, чтобы польза была в проде, а не в презентации.",
           body: "OpenAI · Anthropic · MCP · vector DBs · LangChain · agentic workflows",
         },
       ],
@@ -412,28 +412,28 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "Systems, identity and mail",
           intro:
-            "I build the core of corporate infrastructure and keep it running for years — from hypervisor to mail and single sign-on.",
+            "The core of corporate infrastructure — hypervisor to single sign-on.",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "Networking, proxies and security",
           intro:
-            "I tie sites into one managed fabric and hold the perimeter: routing, VPN, reverse proxies, event analytics.",
+            "I tie sites into one fabric and hold the perimeter.",
           body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
           more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "Cloud and automation",
           intro:
-            "Anything repetitive gets automated: clouds under IaC, configs as code, services in containers.",
+            "Anything repetitive becomes code: IaC, configs, containers.",
           body: "Yandex Cloud · VK Cloud · AWS · GCP · Azure · Terraform · Ansible · Docker · Python · PowerShell",
           more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · GitLab CI · Bash · Ruby",
         },
         {
           label: "AI agents",
           intro:
-            "I wire LLMs into real workflows so they deliver in production — not in slide decks.",
+            "I wire LLMs in so they pay off in production, not in slide decks.",
           body: "OpenAI · Anthropic · MCP · vector DBs · LangChain · agentic workflows",
         },
       ],
@@ -723,28 +723,28 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "系统、Active Directory 与邮件",
           intro:
-            "搭建并长期运维企业基础设施的核心:从虚拟化平台到邮件与统一身份认证。",
+            "企业基础设施的核心:从虚拟化平台到统一身份认证。",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "网络、代理与安全",
           intro:
-            "将多个站点连成统一可控的网络并守住安全边界:路由、VPN、反向代理、事件分析。",
+            "把多个站点连成统一网络,并守住安全边界。",
           body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
           more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "俄罗斯本地云与自动化",
           intro:
-            "一切重复性工作皆自动化:云上 IaC、配置即代码、服务容器化。",
+            "一切重复性工作皆化为代码:IaC、配置、容器。",
           body: "Yandex Cloud · VK Cloud · AWS · GCP · Azure · Terraform · Ansible · Docker · Python · PowerShell",
           more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · GitLab CI · Bash · Ruby",
         },
         {
           label: "AI 智能体",
           intro:
-            "把 LLM 接入真实业务流程,让它在生产环境创造价值,而不是停留在演示里。",
+            "把 LLM 接入生产环境创造价值,而不是停留在演示里。",
           body: "OpenAI · Anthropic · MCP · Vector DB · LangChain · Agentic Workflow",
         },
       ],
