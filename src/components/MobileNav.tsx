@@ -8,10 +8,28 @@ export function MobileNav({ locale }: Props) {
 
   const navLabels: Record<SectionId, string> =
     locale === "ru"
-      ? { about: "О себе", projects: "Кейсы", experience: "Опыт", education: "Курсы" }
+      ? {
+          about: "О себе",
+          projects: "Кейсы",
+          experience: "Опыт",
+          education: "Курсы",
+          stack: "Стек",
+        }
       : locale === "zh"
-        ? { about: "关于", projects: "案例", experience: "经历", education: "课程" }
-        : { about: "About", projects: "Work", experience: "Experience", education: "Education" };
+        ? {
+            about: "关于",
+            projects: "案例",
+            experience: "经历",
+            education: "课程",
+            stack: "技术栈",
+          }
+        : {
+            about: "About",
+            projects: "Work",
+            experience: "Experience",
+            education: "Education",
+            stack: "Stack",
+          };
 
   return (
     <nav className="mobile-nav" aria-label="Sections">

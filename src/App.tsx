@@ -5,6 +5,7 @@ import { ExperienceSection } from "./components/ExperienceSection";
 import { MobileNav } from "./components/MobileNav";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { Sidebar } from "./components/Sidebar";
+import { StackSection } from "./components/StackSection";
 import { Spotlight } from "./components/Spotlight";
 import { profileByLocale, type Locale } from "./data/profile";
 
@@ -32,6 +33,7 @@ function App({ locale }: Props) {
             <ProjectsSection locale={locale} content={content} />
             <ExperienceSection locale={locale} content={content} />
             <EducationSection locale={locale} content={content} />
+            <StackSection locale={locale} content={content} />
             <ContactSection content={content} />
           </div>
         </main>

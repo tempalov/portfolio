@@ -521,62 +521,13 @@ svg {
   font-weight: var(--fw-medium);
 }
 
-/* ---- Глубина: скрыта в покое, раскрывается по наведению / фокусу / нажатию.
-   display:none, а не удаление из разметки — пререндер всё равно отдаёт эти
-   чипы поисковикам и AI-краулерам. ---- */
-.chip-more {
-  display: none;
-}
-
-.tag-group:hover .chip-more,
-.tag-group:focus-within .chip-more,
-.tag-group.is-open .chip-more {
-  display: inline-flex;
-  animation: chip-in var(--t-fast) var(--ease) both;
-}
-
-@keyframes chip-in {
-  from {
-    opacity: 0;
-    transform: translateY(-3px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.tag-toggle {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 10px;
-  background: transparent;
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--r-chip);
+/* Подводка к секции «Стек» — самому глубокому слою страницы */
+.stack-note {
+  font-size: 14px;
   color: var(--muted);
-  cursor: pointer;
-  transition:
-    color var(--t-fast) var(--ease),
-    border-color var(--t-fast) var(--ease);
-}
-
-.tag-toggle:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-/* На устройствах с мышью кнопка не нужна, пока группа раскрыта наведением */
-@media (hover: hover) {
-  .tag-group:hover .tag-toggle {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .tag-group.is-open:hover .tag-toggle {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  line-height: 1.6;
+  margin: 0 0 26px;
+  max-width: 62ch;
 }
 
 /* =========================================================================

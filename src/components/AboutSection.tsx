@@ -1,53 +1,12 @@
-import { useState } from "react";
-import type { Locale, Pillar, ProfileBundle } from "../data/profile";
+import type { Locale, ProfileBundle } from "../data/profile";
 
 type Props = { locale: Locale; content: ProfileBundle };
 
 /**
- * Группа технологий: видно ядро, глубина раскрывается наведением (десктоп),
- * нажатием (тач) или фокусом с клавиатуры. Скрытые чипы всё равно лежат
- * в HTML — пререндер отдаёт их поисковикам и AI-краулерам целиком.
+ * Верхний блок — только человеческий текст, без перечисления технологий.
+ * Стек живёт ниже, в отдельной секции: страница углубляется по мере прокрутки.
  */
-function PillarGroup({ pillar, moreLabel, lessLabel }: {
-  pillar: Pillar;
-  moreLabel: (n: number) => string;
-  lessLabel: string;
-}) {
-  const [open, setOpen] = useState(false);
-  const core = pillar.body.split(" · ");
-  const more = pillar.more ? pillar.more.split(" · ") : [];
-
-  return (
-    <div className={`tag-group${open ? " is-open" : ""}`}>
-      <h3>{pillar.label}</h3>
-      <p className="tag-group-intro">{pillar.intro}</p>
-      <div className="tag-list">
-        {core.map((tag) => (
-          <span className="chip" key={tag}>
-            {tag.trim()}
-          </span>
-        ))}
-        {more.map((tag) => (
-          <span className="chip chip-more" key={tag}>
-            {tag.trim()}
-          </span>
-        ))}
-        {more.length > 0 && (
-          <button
-            type="button"
-            className="tag-toggle"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-          >
-            {open ? lessLabel : moreLabel(more.length)}
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export function AboutSection({ locale, content }: Props) {
+export function AboutSection({ locale }: Props) {
   const aboutTextRu =
     "12+ лет в корпоративной IT-инфраструктуре. Начинал с поддержки пользователей и системного администрирования в IT-аутсорсе, постепенно дорос до архитектора систем полного цикла — от серверной комнаты и сетей до AI-агентов в эксплуатации. Одинаково уверенно собираю инфраструктуру с нуля, автоматизирую сложные бизнес-процессы агентными системами и встраиваю нейросети в реальные рабочие потоки.";
 
@@ -72,24 +31,11 @@ export function AboutSection({ locale, content }: Props) {
   const aboutText2 =
     locale === "ru" ? aboutText2Ru : locale === "zh" ? aboutText2Zh : aboutText2En;
 
-  const moreLabel = (n: number) =>
-    locale === "ru" ? `+ ещё ${n}` : locale === "zh" ? `+ 还有 ${n} 项` : `+ ${n} more`;
-  const lessLabel = locale === "ru" ? "свернуть" : locale === "zh" ? "收起" : "collapse";
-
   return (
     <section id="about" className="block">
       <p className="block-eyebrow-mobile">{eyebrow}</p>
       <p className="about-text">{aboutText}</p>
-      <p className="about-text">{aboutText2}</p>
-
-      {content.hero.pillars.map((pillar) => (
-        <PillarGroup
-          key={pillar.label}
-          pillar={pillar}
-          moreLabel={moreLabel}
-          lessLabel={lessLabel}
-        />
-      ))}
+      <p className="about-text about-text-last">{aboutText2}</p>
     </section>
   );
 }
