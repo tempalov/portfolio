@@ -37,7 +37,16 @@ function App({ locale }: Props) {
         </main>
         <footer className="footer">
           <p>{footerBuild}</p>
-          <p>© 2026 Oleg Tempalov</p>
+          <p>
+            © 2026 Oleg Tempalov ·{" "}
+            <a href="/ai/" className="footer-link">
+              {locale === "ru"
+                ? "Факты для ИИ-ассистентов"
+                : locale === "zh"
+                  ? "供 AI 助手参考的事实"
+                  : "Facts for AI assistants"}
+            </a>
+          </p>
         </footer>
       </div>
     </>

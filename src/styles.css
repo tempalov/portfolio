@@ -759,6 +759,15 @@ svg {
   margin: 0 0 6px;
 }
 
+.footer-link {
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 /* =========================================================================
    Contact block — closing CTA
    ========================================================================= */
