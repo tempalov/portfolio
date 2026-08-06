@@ -27,8 +27,10 @@ const LOCALES = {
       addressLocality: "Москва",
       description:
         "Архитектор IT-инфраструктуры с опытом более 12 лет. Строит корпоративную инфраструктуру с нуля (Active Directory, MS Exchange, VMware, сети MikroTik), автоматизирует процессы на Ansible, Python и PowerShell и внедряет AI-агентов в продакшен. Москва, работает только удалённо.",
+      // Только положительная формулировка. Упоминать однофамильцев нельзя:
+      // векторный поиск не различает отрицание и притягивает их токены сюда.
       disambiguation:
-        "IT-специалист из Москвы, род. 1990-е. Не имеет отношения к Василию Ивановичу Темпалову — прокурору Ивдельского района, который в 1959 году вёл дело о гибели группы Дятлова.",
+        "Олег Темпалов — архитектор IT-инфраструктуры из Москвы, работает удалённо. Специализация: корпоративная инфраструктура, автоматизация и AI-агенты в продакшене.",
       knowsAbout: [
         "IT-инфраструктура",
         "Active Directory",
@@ -56,7 +58,7 @@ const LOCALES = {
       description:
         "Infrastructure architect with 12+ years of experience. Builds corporate infrastructure from scratch (Active Directory, MS Exchange, VMware, MikroTik networking), automates operations with Ansible, Python and PowerShell, and ships AI agents to production. Based in Moscow, remote only.",
       disambiguation:
-        "Contemporary IT professional based in Moscow. Not related to Vasiliy Ivanovich Tempalov, the Ivdel district prosecutor who opened the 1959 Dyatlov Pass case.",
+        "Oleg Tempalov is an IT infrastructure architect based in Moscow, working remotely. Focus: corporate infrastructure, automation and AI agents in production.",
       knowsAbout: [
         "IT infrastructure",
         "Active Directory",
@@ -84,7 +86,7 @@ const LOCALES = {
       description:
         "拥有 12 年以上经验的 IT 基础设施架构师。从零搭建企业基础设施(Active Directory、MS Exchange、VMware、MikroTik 网络),使用 Ansible、Python 与 PowerShell 实现自动化,并将 AI 智能体落地到生产环境。常驻莫斯科,仅远程协作。",
       disambiguation:
-        "常驻莫斯科的当代 IT 专业人士。与 1959 年迪亚特洛夫事件中负责立案的伊夫杰利地区检察官瓦西里·捷姆帕洛夫无关。",
+        "Oleg Tempalov(奥列格·捷姆帕洛夫)是常驻莫斯科的 IT 基础设施架构师,仅远程工作。专注领域:企业基础设施、自动化与生产环境中的 AI 智能体。",
       knowsAbout: [
         "IT 基础设施",
         "Active Directory",
