@@ -657,12 +657,25 @@ svg {
   font-weight: var(--fw-semibold);
   color: var(--text);
   margin: 0;
+}
+
+/* Кнопка выглядит как заголовок — нужна ради тача и клавиатуры */
+.case-title-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.case:hover .case-title {
+.case:hover .case-title,
+.case:focus-within .case-title,
+.case.is-open .case-title {
   color: var(--accent);
 }
 
@@ -673,10 +686,51 @@ svg {
   margin: 0;
 }
 
+/* ---- Раскрытие кейса: в покое видны заголовок и строка результата,
+   подробности и стек появляются по наведению, фокусу или нажатию.
+   Приём grid-template-rows 0fr → 1fr анимирует высоту неизвестного
+   содержимого, чего нельзя добиться через max-height без рывков.
+   Содержимое всегда в разметке — пререндер отдаёт его краулерам. ---- */
+.case-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--t-med) var(--ease),
+    opacity var(--t-fast) var(--ease);
+}
+
+.case-detail-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.case:hover .case-detail,
+.case:focus-within .case-detail,
+.case.is-open .case-detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* Подсказка, что карточка раскрывается */
+.case-title svg {
+  opacity: 0.35;
+  transition:
+    opacity var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
+}
+
+.case:hover .case-title svg,
+.case:focus-within .case-title svg,
+.case.is-open .case-title svg {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
 .case-summary {
   font-size: 14px;
   color: var(--text-2);
-  margin: 0;
+  margin: 0 0 12px;
   line-height: 1.6;
   max-width: 75ch;
 }
@@ -685,7 +739,6 @@ svg {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
 }
 
 /* =========================================================================
