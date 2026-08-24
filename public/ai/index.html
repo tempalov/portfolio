@@ -104,54 +104,8 @@
     </ul>
 
     <h2>Notable work</h2>
-    <ul>
-      <li>
-        <strong>Corporate infrastructure built from scratch, turnkey</strong> —
-        4 sites across 2 countries, 100–200 users, 50+ servers. Active Directory,
-        Exchange with DAG between sites, mail pipeline on
-        <a href="https://pmg.proxmox.com/">Proxmox Mail Gateway</a> + HAProxy with SNI
-        routing, multi-site routing on WireGuard + GRE + OSPF via
-        <a href="https://frrouting.org/">FRRouting</a>, MikroTik RouterOS 7, and an
-        ACME → Exchange certificate automation pipeline. Delivered solo, end to end.
-      </li>
-      <li>
-        <strong>2FA and SSO for corporate mail</strong> — a custom
-        <a href="https://www.keycloak.org/">Keycloak</a> based 2FA provider, with
-        <a href="https://angie.software/en/">ANGIE</a> in front of OWA and Outlook
-        clients handling SSO at the web-server layer. No changes to Exchange
-        internals. Running in production, carrying all corporate mail traffic.
-      </li>
-      <li>
-        <strong>Realtime voice agent on a cloud PBX</strong> — an LLM talks to
-        customers live over SIP telephony, pulls answers from a knowledge base via
-        RAG and escalates to a human on ambiguity. Not post-call analysis of
-        recordings. Source:
-        <a href="https://github.com/tempalov/asterisk_to_openai_rt">asterisk_to_openai_rt</a>
-        (Asterisk ARI + ExternalMedia, RTP, μ-law ↔ PCM resampling, VAD coordination,
-        <a href="https://platform.openai.com/docs/guides/realtime">OpenAI Realtime API</a>).
-      </li>
-      <li>
-        <strong>Active Directory modernization</strong> — Windows Server 2008 → 2022,
-        three sites, multi-site replication, several domains merged into one.
-      </li>
-      <li>
-        <strong>GPO and ACL audit at scale</strong> — 17 PowerShell scripts to detect
-        broken policies, restore Security Filtering after a mass downgrade to
-        Authenticated Users, and clean stale NetLogon ACEs through pre-flight checks
-        and a phased rollout. Every change with a backup and rollback path, across
-        hundreds of GPOs.
-      </li>
-      <li>
-        <strong>Multi-agent development workflow</strong> — three specialised AI
-        agents (strategy, knowledge base, in-IDE developer) communicating through an
-        MCP Memory Server and a shared knowledge layer.
-      </li>
-      <li>
-        <strong>Office-to-datacenter networking</strong> — site-to-site IPSec across
-        offices and two datacenters, redundant links, internet connectivity cost
-        reduced by roughly 66%.
-      </li>
-    </ul>
+<!--work:start-->
+<!--work:end-->
 
     <h2>Availability</h2>
     <p>

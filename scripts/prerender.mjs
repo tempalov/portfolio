@@ -397,4 +397,53 @@ ${u.alternates ? u.alternates + "\n" : ""}    <changefreq>monthly</changefreq>
 `;
 
 writeFileSync(path.join(root, "dist", "sitemap.xml"), sitemap);
+
+// Список работ на /ai/ собираем из тех же данных, что и сайт. Раньше он жил
+// отдельным куском вёрстки и разошёлся с кейсами: страница, написанная ровно
+// для того, чтобы ИИ-ассистенты цитировали её как источник, не может отставать
+// от того, что она описывает. Заодно каждая работа получает ссылку на свою
+// страницу — краулеру без JS есть куда пойти за подробностями.
+const aiPath = path.join(root, "dist", "ai", "index.html");
+const aiHtml = readFileSync(aiPath, "utf-8");
+
+if (!aiHtml.includes("<!--work:start-->")) {
+  throw new Error("prerender: маркеры work:start/end не найдены в /ai/index.html");
+}
+
+const workList = profileByLocale.en.caseStudies
+  .map((c) => {
+    const url = caseUrl("en", c.slug);
+    return `      <li>
+        <strong>${esc(c.title)}</strong> — ${esc(c.impact)}
+        <a href="${url}">Details</a>: ${esc(c.summary)}
+      </li>`;
+  })
+  .join("\n");
+
+writeFileSync(
+  aiPath,
+  aiHtml.replace(
+    /<!--work:start-->[\s\S]*?<!--work:end-->/,
+    `<!--work:start-->\n    <ul>\n${workList}\n    </ul>\n    <!--work:end-->`,
+  ),
+);
+console.log(`prerender: /ai/ — список работ обновлён (${profileByLocale.en.caseStudies.length} шт.)`);
+
+// llms.txt — тот же список, но по-русски и с русскими адресами кейсов.
+const llmsPath = path.join(root, "dist", "llms.txt");
+const llmsTxt = readFileSync(llmsPath, "utf-8");
+
+if (!llmsTxt.includes("<!--work:start-->")) {
+  throw new Error("prerender: маркеры work:start/end не найдены в llms.txt");
+}
+
+const llmsWork = profileByLocale.ru.caseStudies
+  .map((c) => `- **${c.title}** — ${c.impact}\n  ${c.summary}\n  ${caseUrl("ru", c.slug)}`)
+  .join("\n\n");
+
+writeFileSync(
+  llmsPath,
+  llmsTxt.replace(/<!--work:start-->[\s\S]*?<!--work:end-->/, llmsWork),
+);
+console.log(`prerender: llms.txt — список работ обновлён (${profileByLocale.ru.caseStudies.length} шт.)`);
 console.log(`prerender: sitemap.xml (${sitemapUrls.length} URLs, lastmod=${lastmod})`);
