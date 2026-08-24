@@ -1,4 +1,5 @@
 import { AboutSection } from "./components/AboutSection";
+import { CasePage } from "./components/CasePage";
 import { ContactSection } from "./components/ContactSection";
 import { EducationSection } from "./components/EducationSection";
 import { ExperienceSection } from "./components/ExperienceSection";
@@ -8,10 +9,11 @@ import { Sidebar } from "./components/Sidebar";
 import { StackSection } from "./components/StackSection";
 import { Spotlight } from "./components/Spotlight";
 import { profileByLocale, type Locale } from "./data/profile";
+import type { Route } from "./lib/routes";
 
-type Props = { locale: Locale };
+type Props = { locale: Locale; route?: Route };
 
-function App({ locale }: Props) {
+function App({ locale, route = { kind: "home" } }: Props) {
   const content = profileByLocale[locale];
 
   const footerBuild =
@@ -24,17 +26,23 @@ function App({ locale }: Props) {
   return (
     <>
       <Spotlight />
-      <MobileNav locale={locale} />
+      {route.kind === "home" && <MobileNav locale={locale} />}
       <div className="app-shell">
         <main className="layout">
-          <Sidebar locale={locale} content={content} />
+          <Sidebar locale={locale} content={content} route={route} />
           <div className="content">
-            <AboutSection locale={locale} content={content} />
-            <ProjectsSection locale={locale} content={content} />
-            <ExperienceSection locale={locale} content={content} />
-            <EducationSection locale={locale} content={content} />
-            <StackSection locale={locale} content={content} />
-            <ContactSection content={content} />
+            {route.kind === "case" ? (
+              <CasePage locale={locale} content={content} slug={route.slug} />
+            ) : (
+              <>
+                <AboutSection locale={locale} content={content} />
+                <ProjectsSection locale={locale} content={content} />
+                <ExperienceSection locale={locale} content={content} />
+                <EducationSection locale={locale} content={content} />
+                <StackSection locale={locale} content={content} />
+                <ContactSection content={content} />
+              </>
+            )}
           </div>
         </main>
         <footer className="footer">

@@ -1,11 +1,14 @@
 import { useId, useState } from "react";
 import { ArrowUpRight, type LucideIcon } from "lucide-react";
-import type { CaseStudy } from "../data/profile";
+import type { CaseStudy, Locale } from "../data/profile";
+import { CASE_ICONS } from "../lib/caseIcons";
+import { casePath } from "../lib/routes";
 
 type Props = {
+  locale: Locale;
   eyebrow: string;
   cases: CaseStudy[];
-  icons: LucideIcon[];
+  moreLabel: string;
 };
 
 /**
@@ -13,7 +16,17 @@ type Props = {
  * раскрываются по наведению (мышь), по фокусу (клавиатура) и по нажатию (тач).
  * Скрытое содержимое остаётся в разметке: пререндер отдаёт его краулерам.
  */
-function CaseCard({ c, Icon }: { c: CaseStudy; Icon?: LucideIcon }) {
+function CaseCard({
+  c,
+  Icon,
+  locale,
+  moreLabel,
+}: {
+  c: CaseStudy;
+  Icon?: LucideIcon;
+  locale: Locale;
+  moreLabel: string;
+}) {
   const [open, setOpen] = useState(false);
   const detailId = useId();
 
@@ -49,6 +62,12 @@ function CaseCard({ c, Icon }: { c: CaseStudy; Icon?: LucideIcon }) {
                 </span>
               ))}
             </div>
+            {/* Ссылка на отдельную страницу кейса. Лежит внутри раскрывающейся
+                части, но в разметке присутствует всегда — краулер её видит. */}
+            <a className="case-more" href={casePath(locale, c.slug)}>
+              {moreLabel}
+              <ArrowUpRight size={13} strokeWidth={2} aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
@@ -56,7 +75,7 @@ function CaseCard({ c, Icon }: { c: CaseStudy; Icon?: LucideIcon }) {
   );
 }
 
-export function CaseGroup({ eyebrow, cases, icons }: Props) {
+export function CaseGroup({ locale, eyebrow, cases, moreLabel }: Props) {
   return (
     <div className="case-group">
       <div className="case-group-header">
@@ -64,8 +83,14 @@ export function CaseGroup({ eyebrow, cases, icons }: Props) {
         <div className="case-group-rule" aria-hidden="true" />
       </div>
       <div className="case-grid">
-        {cases.map((c, idx) => (
-          <CaseCard key={c.title} c={c} Icon={icons[idx]} />
+        {cases.map((c) => (
+          <CaseCard
+            key={c.slug}
+            c={c}
+            Icon={CASE_ICONS[c.slug]}
+            locale={locale}
+            moreLabel={moreLabel}
+          />
         ))}
       </div>
     </div>

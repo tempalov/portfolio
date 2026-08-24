@@ -14,6 +14,8 @@ export type TimelineItem = {
 
 export type CaseStudy = {
   group: CaseGroupKind;
+  /** Адрес отдельной страницы кейса. Общий для всех локалей. */
+  slug: string;
   title: string;
   impact: string;
   stack: string[];
@@ -141,6 +143,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     caseStudies: [
       {
         group: "infra",
+        slug: "enterprise-infrastructure-from-scratch",
         title: "Enterprise-инфраструктура с нуля",
         impact:
           "4 площадки в 2 странах · 100–200 пользователей · 50+ серверов · mail/AD/networking + cert automation, собрано solo под ключ",
@@ -158,6 +161,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-modernization",
         title: "Модернизация Active Directory",
         impact: "Windows Server 2008 → 2022, 3 страны, мульти-сайт репликация, слияние доменов",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
@@ -166,6 +170,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-gpo-audit",
         title: "Гигиена Active Directory: аудит и починка GPO",
         impact:
           "Аудит и починка GPO/ACL на большом унаследованном лесу, phased rollout с возможностью отката",
@@ -182,6 +187,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "keycloak-angie-2fa-exchange",
         title: "2FA / SSO для корпоративной почты на Keycloak + ANGIE",
         impact:
           "Свой 2FA-провайдер на Keycloak, SSO на уровне web-сервера для OWA и Outlook-клиентов",
@@ -199,6 +205,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "virtualization-vcenter",
         title: "Виртуализация и vCenter",
         impact: "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, кластер на ~15 bare-metal",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
@@ -207,6 +214,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "distributed-veeam-drp",
         title: "Распределённый Veeam и DRP",
         impact: "Backup на трёх площадках, автоматическое копирование конфигов, DRP",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
@@ -215,6 +223,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "office-datacenter-networking",
         title: "Сеть между офисами и ЦОД",
         impact: "Site-to-site IPSec, резервные каналы, −66% затрат на интернет",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
@@ -223,6 +232,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "zabbix-grafana-automation",
         title: "Zabbix + Grafana и автоматизация",
         impact: "Единый мониторинг с прокси в филиалах и автоматизация рутины",
         stack: ["Zabbix", "Grafana", "Python", "PowerShell", "Bash", "Docker"],
@@ -231,6 +241,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "multi-agent-dev-workflow",
         title: "Multi-agent workflow для разработки в соло",
         impact:
           "3 специализированных AI-агента + MCP Memory Server: spec, код и review без переключения контекста",
@@ -240,6 +251,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "realtime-voice-agent-pbx",
         title: "Realtime voice-агент на корпоративной ВАТС",
         impact:
           "Живой разговор LLM с клиентом по корпоративной ВАТС, retrieval по базе знаний, эскалация при неоднозначности",
@@ -249,6 +261,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "llm-call-analysis-bi-crm",
         title: "LLM-анализ звонков и BI/CRM pipeline",
         impact: "Выгрузка в BI на Python и автоматический разбор разговоров GPT-4",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "ВАТС Мегафон", "Python", "ChatGPT API"],
@@ -451,6 +464,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     caseStudies: [
       {
         group: "infra",
+        slug: "enterprise-infrastructure-from-scratch",
         title: "Enterprise infrastructure from scratch",
         impact:
           "4 sites in 2 countries · 100–200 users · 50+ servers · mail/AD/networking + cert automation, built solo turnkey",
@@ -468,6 +482,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-modernization",
         title: "Active Directory modernization",
         impact:
           "Windows Server 2008 → 2022, three sites, multi-site replication, merged domains",
@@ -477,6 +492,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-gpo-audit",
         title: "Active Directory hygiene: GPO audit and repair",
         impact:
           "Operational audit and repair of GPO/ACL on a large legacy forest, phased rollback-safe rollout",
@@ -493,6 +509,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "keycloak-angie-2fa-exchange",
         title: "2FA / SSO for corporate mail with Keycloak + ANGIE",
         impact:
           "Custom Keycloak-based 2FA provider, SSO at the web-server layer for OWA and Outlook clients",
@@ -510,6 +527,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "virtualization-vcenter",
         title: "Virtualization and vCenter",
         impact: "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, ~15 bare-metal cluster",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
@@ -518,6 +536,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "distributed-veeam-drp",
         title: "Distributed Veeam and DRP",
         impact: "Backup on three sites, automated config backups, DRP",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
@@ -526,6 +545,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "office-datacenter-networking",
         title: "Office-to-DC networking",
         impact: "Site-to-site IPSec, redundant channels, ~66% lower internet cost",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
@@ -534,6 +554,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "zabbix-grafana-automation",
         title: "Zabbix + Grafana and automation",
         impact: "Unified monitoring with branch proxies and routine work automated",
         stack: ["Zabbix", "Grafana", "Python", "PowerShell", "Bash", "Docker"],
@@ -542,6 +563,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "multi-agent-dev-workflow",
         title: "Multi-agent workflow for solo development",
         impact:
           "3 specialized AI agents + MCP Memory Server: spec, code, and review without context-switching",
@@ -551,6 +573,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "realtime-voice-agent-pbx",
         title: "Realtime voice agent over a cloud PBX",
         impact:
           "Live LLM conversation with customers over a cloud PBX, retrieval over KB, escalation on ambiguity",
@@ -560,6 +583,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "llm-call-analysis-bi-crm",
         title: "LLM call analysis and BI/CRM pipeline",
         impact: "BI exports from the virtual PBX and automatic GPT-4 call review",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "Megafon PBX", "Python", "ChatGPT API"],
@@ -762,6 +786,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     caseStudies: [
       {
         group: "infra",
+        slug: "enterprise-infrastructure-from-scratch",
         title: "从零搭建企业基础设施",
         impact:
           "2 个国家 4 个站点 · 100–200 用户 · 50+ 台服务器 · 邮件 / AD / 网络 + 证书自动化,独立完成全周期交付",
@@ -779,6 +804,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-modernization",
         title: "Active Directory 现代化",
         impact:
           "Windows Server 2008 → 2022,三站点多副本复制,多域合并",
@@ -788,6 +814,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "active-directory-gpo-audit",
         title: "AD 治理:GPO 审计与修复",
         impact:
           "对大型遗留林进行 GPO / ACL 审计修复,分阶段安全回滚",
@@ -804,6 +831,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "keycloak-angie-2fa-exchange",
         title: "Keycloak + ANGIE 企业邮件 2FA / SSO",
         impact:
           "基于 Keycloak 的自定义 2FA 提供方,在 Web 层为 OWA 与 Outlook 客户端实现 SSO",
@@ -821,6 +849,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "virtualization-vcenter",
         title: "虚拟化与 vCenter",
         impact: "Hyper-V → ESXi,ESXi 5 → 6.7,vCenter 7,约 15 台裸金属集群",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
@@ -829,6 +858,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "distributed-veeam-drp",
         title: "分布式 Veeam 与 DRP",
         impact: "三站点备份,网络设备配置自动备份,完整 DRP 文档",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
@@ -837,6 +867,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "office-datacenter-networking",
         title: "办公到数据中心网络",
         impact: "站点间 IPSec、冗余链路、互联网成本下降约 66%",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
@@ -845,6 +876,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "infra",
+        slug: "zabbix-grafana-automation",
         title: "Zabbix + Grafana 与运维自动化",
         impact: "带分支代理的统一监控,日常运维流程自动化",
         stack: ["Zabbix", "Grafana", "Python", "PowerShell", "Bash", "Docker"],
@@ -853,6 +885,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "multi-agent-dev-workflow",
         title: "独立开发的多智能体工作流",
         impact:
           "3 个专业 AI 智能体 + MCP Memory Server:规格、编码、审查无切换",
@@ -862,6 +895,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "realtime-voice-agent-pbx",
         title: "企业虚拟 PBX 上的实时语音智能体",
         impact:
           "通过企业虚拟 PBX 与客户进行 LLM 实时对话,基于知识库检索,遇到模糊场景自动升级人工",
@@ -871,6 +905,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       },
       {
         group: "ai",
+        slug: "llm-call-analysis-bi-crm",
         title: "LLM 通话分析与 BI / CRM 流水线",
         impact: "虚拟 PBX 数据进入 BI,GPT-4 自动审听通话",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "Megafon PBX", "Python", "ChatGPT API"],

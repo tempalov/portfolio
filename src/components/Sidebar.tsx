@@ -1,15 +1,23 @@
 import { Github, Mail, Phone, Send } from "lucide-react";
 import type { Locale, ProfileBundle } from "../data/profile";
 import { SECTIONS, useActiveSection, type SectionId } from "../hooks/useActiveSection";
+import { homePath, pathFor, type Route } from "../lib/routes";
 import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   locale: Locale;
   content: ProfileBundle;
+  route: Route;
 };
 
-export function Sidebar({ locale, content }: Props) {
+export function Sidebar({ locale, content, route }: Props) {
   const active = useActiveSection();
+  const onHome = route.kind === "home";
+
+  // На странице кейса секций нет — якоря должны уводить на главную, иначе
+  // ссылки ведут в никуда и краулер видит битую навигацию.
+  const sectionHref = (id: SectionId) =>
+    onHome ? `#${id}` : `${homePath(locale)}#${id}`;
 
   const navLabels: Record<SectionId, string> =
     locale === "ru"
@@ -57,7 +65,16 @@ export function Sidebar({ locale, content }: Props) {
           alt={content.profile.name}
           loading="eager"
         />
-        <h1>{content.profile.name}</h1>
+        {/* h1 на странице должен быть один и по теме страницы. На главной тема —
+            это человек, на странице кейса — сам кейс, поэтому имя там уходит
+            в обычный абзац и превращается в ссылку на главную. */}
+        {onHome ? (
+          <h1>{content.profile.name}</h1>
+        ) : (
+          <p className="sidebar-name">
+            <a href={homePath(locale)}>{content.profile.name}</a>
+          </p>
+        )}
         <p className="sidebar-role">{content.profile.role}</p>
         <p className="sidebar-tagline">{content.profile.summary}</p>
 
@@ -65,8 +82,8 @@ export function Sidebar({ locale, content }: Props) {
           {SECTIONS.map((id) => (
             <a
               key={id}
-              href={`#${id}`}
-              className={`sidebar-nav-link${active === id ? " is-active" : ""}`}
+              href={sectionHref(id)}
+              className={`sidebar-nav-link${onHome && active === id ? " is-active" : ""}`}
             >
               {navLabels[id]}
             </a>
@@ -116,9 +133,11 @@ export function Sidebar({ locale, content }: Props) {
 
         <div className="sidebar-actions">
           <ThemeToggle labelLight={labelLight} labelDark={labelDark} />
+          {/* Переключатель остаётся на текущей странице: с кейса ведёт на тот же
+              кейс на другом языке, а не выбрасывает на главную. */}
           <nav className="locale-switcher" aria-label="Language">
             <a
-              href="/"
+              href={pathFor("ru", route)}
               className={locale === "ru" ? "locale-active" : ""}
               aria-current={locale === "ru" ? "page" : undefined}
               hrefLang="ru"
@@ -126,7 +145,7 @@ export function Sidebar({ locale, content }: Props) {
               RU
             </a>
             <a
-              href="/en/"
+              href={pathFor("en", route)}
               className={locale === "en" ? "locale-active" : ""}
               aria-current={locale === "en" ? "page" : undefined}
               hrefLang="en"
@@ -134,7 +153,7 @@ export function Sidebar({ locale, content }: Props) {
               EN
             </a>
             <a
-              href="/zh/"
+              href={pathFor("zh", route)}
               className={locale === "zh" ? "locale-active" : ""}
               aria-current={locale === "zh" ? "page" : undefined}
               hrefLang="zh-CN"

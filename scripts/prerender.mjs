@@ -106,29 +106,21 @@ const LOCALES = {
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
-function buildMeta(locale) {
+function buildMeta(locale, page) {
   const cfg = LOCALES[locale];
-  const meta = profileByLocale[locale].meta;
   const alternates = Object.values(LOCALES)
     .filter((l) => l !== cfg)
     .map((l) => l.ogLocale);
 
-  // @graph: ProfilePage → Person → WebSite. Даёт поисковикам и AI-ассистентам
-  // связную «карточку сущности», а не разрозненные поля.
+  // @graph: страница → Person → WebSite. Даёт поисковикам и AI-ассистентам
+  // связную «карточку сущности», а не разрозненные поля. Головной узел разный
+  // у главной (ProfilePage) и у кейса (Article + BreadcrumbList), но Person и
+  // WebSite общие: так все страницы сайта сходятся на одну и ту же сущность.
   const personId = `${SITE}/#person`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": `${cfg.url}#profilepage`,
-        url: cfg.url,
-        name: meta.title,
-        description: meta.description,
-        inLanguage: cfg.htmlLang,
-        mainEntity: { "@id": personId },
-        isPartOf: { "@id": `${SITE}/#website` },
-      },
+      ...page.headNodes(personId, cfg),
       {
         "@type": "Person",
         "@id": personId,
@@ -163,10 +155,12 @@ function buildMeta(locale) {
           "https://habr.com/ru/users/tempalov/",
         ],
         knowsAbout: cfg.person.knowsAbout,
+        // Только языки, на которых он реально говорит. Китайская локаль сайта —
+        // это позиционирование под рынок, а не владение языком; заявлять здесь
+        // китайский нельзя: ассистенты пересказывают эти поля как факт.
         knowsLanguage: [
           { "@type": "Language", name: "Russian", alternateName: "ru" },
           { "@type": "Language", name: "English", alternateName: "en" },
-          { "@type": "Language", name: "Chinese", alternateName: "zh" },
         ],
       },
       {
@@ -181,17 +175,17 @@ function buildMeta(locale) {
   };
 
   return [
-    `<title>${esc(meta.title)}</title>`,
-    `<meta name="description" content="${esc(meta.description)}" />`,
-    `<link rel="canonical" href="${cfg.url}" />`,
-    `<link rel="alternate" hreflang="ru" href="${LOCALES.ru.url}" />`,
-    `<link rel="alternate" hreflang="en" href="${LOCALES.en.url}" />`,
-    `<link rel="alternate" hreflang="zh-CN" href="${LOCALES.zh.url}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${LOCALES.ru.url}" />`,
-    `<meta property="og:type" content="website" />`,
-    `<meta property="og:url" content="${cfg.url}" />`,
-    `<meta property="og:title" content="${esc(meta.title)}" />`,
-    `<meta property="og:description" content="${esc(meta.description)}" />`,
+    `<title>${esc(page.title)}</title>`,
+    `<meta name="description" content="${esc(page.description)}" />`,
+    `<link rel="canonical" href="${page.url}" />`,
+    `<link rel="alternate" hreflang="ru" href="${page.alt.ru}" />`,
+    `<link rel="alternate" hreflang="en" href="${page.alt.en}" />`,
+    `<link rel="alternate" hreflang="zh-CN" href="${page.alt.zh}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${page.alt.ru}" />`,
+    `<meta property="og:type" content="${page.ogType}" />`,
+    `<meta property="og:url" content="${page.url}" />`,
+    `<meta property="og:title" content="${esc(page.title)}" />`,
+    `<meta property="og:description" content="${esc(page.description)}" />`,
     `<meta property="og:image" content="${SITE}/avatar.jpg" />`,
     `<meta property="og:locale" content="${cfg.ogLocale}" />`,
     alternates
@@ -208,22 +202,125 @@ if (!template.includes("<!--meta:start-->") || !template.includes('<div id="root
   throw new Error("prerender: template markers not found in dist/index.html");
 }
 
-for (const locale of Object.keys(LOCALES)) {
+/** Записать одну страницу: подставить lang, мету и отрендеренное приложение. */
+function emit(locale, route, page, outFile) {
   const cfg = LOCALES[locale];
-  const appHtml = render(locale);
+  const appHtml = render(locale, route);
   const html = template
     .replace(/<html lang="[^"]*"/, `<html lang="${cfg.htmlLang}"`)
     .replace(
       /<!--meta:start-->[\s\S]*?<!--meta:end-->/,
-      `<!--meta:start-->\n    ${buildMeta(locale)}\n    <!--meta:end-->`,
+      `<!--meta:start-->\n    ${buildMeta(locale, page)}\n    <!--meta:end-->`,
     )
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
-  const outPath = path.join(root, "dist", cfg.outFile);
+  const outPath = path.join(root, "dist", outFile);
   mkdirSync(path.dirname(outPath), { recursive: true });
   writeFileSync(outPath, html);
-  console.log(`prerender: ${cfg.outFile} (${(html.length / 1024).toFixed(0)} KB, lang=${cfg.htmlLang})`);
+  return html.length;
 }
+
+const homeAlt = { ru: LOCALES.ru.url, en: LOCALES.en.url, zh: LOCALES.zh.url };
+
+// --- Главные страницы ---
+for (const locale of Object.keys(LOCALES)) {
+  const cfg = LOCALES[locale];
+  const meta = profileByLocale[locale].meta;
+  const size = emit(
+    locale,
+    { kind: "home" },
+    {
+      url: cfg.url,
+      title: meta.title,
+      description: meta.description,
+      alt: homeAlt,
+      ogType: "website",
+      headNodes: (personId) => [
+        {
+          "@type": "ProfilePage",
+          "@id": `${cfg.url}#profilepage`,
+          url: cfg.url,
+          name: meta.title,
+          description: meta.description,
+          inLanguage: cfg.htmlLang,
+          mainEntity: { "@id": personId },
+          isPartOf: { "@id": `${SITE}/#website` },
+        },
+      ],
+    },
+    cfg.outFile,
+  );
+  console.log(`prerender: ${cfg.outFile} (${(size / 1024).toFixed(0)} KB, lang=${cfg.htmlLang})`);
+}
+
+// --- Страницы кейсов ---
+// Каждый кейс получает свой адрес во всех трёх локалях. Одиннадцать тем на
+// одном URL конкурировали за одну страницу; поиск и retrieval у LLM работают
+// с документом целиком, поэтому страница про одну тему бьёт страницу, где
+// эта тема — один абзац из одиннадцати.
+const caseUrl = (locale, slug) =>
+  `${SITE}${locale === "ru" ? "" : `/${locale}`}/cases/${slug}/`;
+
+// Слаги общие для всех локалей — берём из русского бандла как из опорного.
+const slugs = profileByLocale.ru.caseStudies.map((c) => c.slug);
+const caseSitemapEntries = [];
+
+for (const locale of Object.keys(LOCALES)) {
+  const cfg = LOCALES[locale];
+  for (const slug of slugs) {
+    const c = profileByLocale[locale].caseStudies.find((x) => x.slug === slug);
+    if (!c) throw new Error(`prerender: кейс ${slug} отсутствует в локали ${locale}`);
+
+    const url = caseUrl(locale, slug);
+    const alt = { ru: caseUrl("ru", slug), en: caseUrl("en", slug), zh: caseUrl("zh", slug) };
+
+    emit(
+      locale,
+      { kind: "case", slug },
+      {
+        url,
+        title: `${c.title} — ${cfg.person.name}`,
+        description: c.impact,
+        alt,
+        ogType: "article",
+        headNodes: (personId, cfgLocal) => [
+          {
+            "@type": "Article",
+            "@id": `${url}#article`,
+            url,
+            headline: c.title,
+            description: c.impact,
+            articleBody: c.summary,
+            inLanguage: cfgLocal.htmlLang,
+            keywords: c.stack.join(", "),
+            about: c.stack.map((name) => ({ "@type": "Thing", name })),
+            author: { "@id": personId },
+            publisher: { "@id": personId },
+            mainEntityOfPage: url,
+            isPartOf: { "@id": `${SITE}/#website` },
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${url}#breadcrumbs`,
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: cfgLocal.person.name, item: cfgLocal.url },
+              { "@type": "ListItem", position: 2, name: c.title, item: url },
+            ],
+          },
+        ],
+      },
+      `${locale === "ru" ? "" : `${locale}/`}cases/${slug}/index.html`,
+    );
+
+    if (locale === "ru") {
+      caseSitemapEntries.push({ slug, alt });
+    }
+  }
+}
+console.log(
+  `prerender: ${slugs.length} кейсов × ${Object.keys(LOCALES).length} локали = ` +
+    `${slugs.length * Object.keys(LOCALES).length} страниц`,
+);
 
 // Sitemap собираем здесь, а не держим статикой в public/: иначе lastmod
 // замерзает на дате, когда файл написали руками, и краулеры перестают
@@ -236,6 +333,13 @@ const hreflang = Object.values(LOCALES)
   .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${LOCALES.ru.url}"/>`)
   .join("\n");
 
+/** hreflang-блок для набора адресов «одна страница на трёх языках». */
+const altBlock = (alt) =>
+  Object.entries(LOCALES)
+    .map(([loc, l]) => `    <xhtml:link rel="alternate" hreflang="${l.htmlLang}" href="${alt[loc]}"/>`)
+    .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${alt.ru}"/>`)
+    .join("\n");
+
 const sitemapUrls = [
   ...Object.values(LOCALES).map((l, i) => ({
     loc: l.url,
@@ -244,6 +348,14 @@ const sitemapUrls = [
   })),
   // Страница фактов для AI-ассистентов: у неё нет языковых версий.
   { loc: `${SITE}/ai/`, priority: "0.8", alternates: null },
+  // Кейсы: по три адреса на кейс, каждый со ссылками на свои языковые версии.
+  ...caseSitemapEntries.flatMap(({ alt }) =>
+    Object.keys(LOCALES).map((loc) => ({
+      loc: alt[loc],
+      priority: "0.7",
+      alternates: altBlock(alt),
+    })),
+  ),
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
