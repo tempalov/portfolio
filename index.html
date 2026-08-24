@@ -89,8 +89,9 @@
         a.parentNode.insertBefore(k, a);
       })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
+      // Без ssr:true. Этот флаг отключает автоматическую отправку хита и ждёт
+      // ручного ym(id,'hit',...) — для статики он просто глушит счётчик.
       ym(111365157, "init", {
-        ssr: true,
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
