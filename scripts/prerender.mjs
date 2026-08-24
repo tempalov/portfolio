@@ -186,12 +186,18 @@ function buildMeta(locale, page) {
     `<meta property="og:url" content="${page.url}" />`,
     `<meta property="og:title" content="${esc(page.title)}" />`,
     `<meta property="og:description" content="${esc(page.description)}" />`,
-    `<meta property="og:image" content="${SITE}/avatar.jpg" />`,
+    // Картинка 1200×630 на каждый язык: квадратный аватар соцсети режут в
+    // мелкую иконку, широкая карточка разворачивается на всю ширину поста.
+    `<meta property="og:image" content="${SITE}/og/${locale}.png" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="${esc(`${cfg.person.name} — ${cfg.person.jobTitle}`)}" />`,
     `<meta property="og:locale" content="${cfg.ogLocale}" />`,
     alternates
       .map((a) => `<meta property="og:locale:alternate" content="${a}" />`)
       .join("\n    "),
-    `<meta name="twitter:card" content="summary" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:image" content="${SITE}/og/${locale}.png" />`,
     `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
   ].join("\n    ");
 }
