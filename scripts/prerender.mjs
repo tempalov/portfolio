@@ -267,6 +267,22 @@ for (const locale of Object.keys(LOCALES)) {
 const caseUrl = (locale, slug) =>
   `${SITE}${locale === "ru" ? "" : `/${locale}`}/cases/${slug}/`;
 
+// Иероглиф занимает две ширины, поэтому в выдаче китайский заголовок
+// обрезается примерно вдвое раньше латинского.
+const isCJK = (s) => /[　-鿿＀-￯]/.test(s);
+
+/**
+ * Заголовок страницы кейса. Имя в конце помогает узнаваемости, но если из-за
+ * него заголовок вылезает за предел выдачи — обрезается как раз название
+ * кейса, то есть самое ценное. Тогда имя не добавляем: оно и так есть в
+ * хлебных крошках, в JSON-LD и в сайдбаре.
+ */
+function caseTitle(caseName, personName) {
+  const limit = isCJK(caseName) ? 30 : 60;
+  const withBrand = `${caseName} — ${personName}`;
+  return withBrand.length <= limit ? withBrand : caseName;
+}
+
 // Слаги общие для всех локалей — берём из русского бандла как из опорного.
 const slugs = profileByLocale.ru.caseStudies.map((c) => c.slug);
 const caseSitemapEntries = [];
@@ -285,7 +301,7 @@ for (const locale of Object.keys(LOCALES)) {
       { kind: "case", slug },
       {
         url,
-        title: `${c.title} — ${cfg.person.name}`,
+        title: caseTitle(c.title, cfg.person.name),
         description: c.impact,
         alt,
         ogType: "article",

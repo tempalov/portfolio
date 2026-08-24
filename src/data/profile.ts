@@ -396,7 +396,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     meta: {
       title: "Олег Темпалов — архитектор IT-инфраструктуры",
       description:
-        "12+ лет в корпоративной инфраструктуре. Solutions Architect: проектирую системы Linux/Windows на архитекторском уровне, автоматизирую бизнес-процессы агентными системами, интегрирую LLM в продакшен. Только удалённо.",
+        "Архитектор IT-инфраструктуры, 12+ лет. Строю корпоративные системы Linux/Windows, автоматизирую процессы, довожу AI-агентов до продакшена. Только удалённо.",
     },
   },
   en: {
@@ -718,7 +718,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     meta: {
       title: "Oleg Tempalov — IT Infrastructure Architect",
       description:
-        "12+ years in corporate infrastructure. Designing Linux and Windows systems at architect level, automating business processes with agent-based systems, and shipping LLMs to production. Remote only.",
+        "IT infrastructure architect, 12+ years. Building corporate Linux and Windows systems, automating operations, shipping AI agents to production. Remote only.",
     },
   },
   zh: {
@@ -1040,7 +1040,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
     meta: {
       title: "Oleg Tempalov — IT 基础设施架构师 · 中俄技术对接",
       description:
-        "12+ 年俄罗斯企业基础设施经验。面向出海俄罗斯市场的中国科技企业,提供基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。Linux / Windows 系统架构师级,AI 智能体驱动的业务流程自动化,生产环境 LLM 落地。仅远程协作。",
+        "IT 基础设施架构师,12+ 年俄罗斯企业经验。助力中国企业出海俄罗斯:基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。仅远程协作。",
     },
   },
 };
