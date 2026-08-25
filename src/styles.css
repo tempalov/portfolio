@@ -634,11 +634,22 @@ svg {
   color: var(--accent);
 }
 
+/* Строка результата под заголовком. Курсива тут не было смысла: она уже
+   отделена размером и цветом, а третий сигнал превращает подпись в шум.
+   Акцент оставлен заголовку и состоянию наведения — иначе на карточке два
+   акцентных элемента спорят за внимание. */
 .case-impact {
-  font-size: 13px;
-  font-style: italic;
-  color: var(--accent);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
   margin: 0;
+  max-width: 54ch;
+}
+
+.case:hover .case-impact,
+.case:focus-within .case-impact,
+.case.is-open .case-impact {
+  color: var(--text-2);
 }
 
 /* ---- Раскрытие кейса: в покое видны заголовок и строка результата,
