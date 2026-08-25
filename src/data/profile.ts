@@ -87,7 +87,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       phone: "+7 (922) 222-58-00",
       telegram: "https://t.me/tempalov",
       summary:
-        "Полный цикл — от серверной до AI-агентов в продакшене. Под ключ.",
+        "Полный цикл: от серверной до AI-агентов в продакшене. Под ключ.",
       status:
         "Открыт к ролям архитектора инфраструктуры и Head of Infrastructure. Удалённо, full-time или долгосрочный контракт. Готов к NDA-проектам.",
       desiredRole: "Архитектор IT-инфраструктуры",
@@ -104,7 +104,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "Системы, Active Directory и почта",
           intro:
-            "Ядро корпоративной инфраструктуры — от гипервизора до единого входа.",
+            "Ядро корпоративной инфраструктуры: от гипервизора до единого входа.",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
@@ -118,7 +118,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "Облака и автоматизация",
           intro:
-            "Всё повторяющееся — в код: IaC, конфигурации, контейнеры.",
+            "Всё повторяющееся уходит в код: IaC, конфигурации, контейнеры.",
           body: "Yandex Cloud · VK Cloud · Terraform · Ansible · Docker · GitLab CI · Python · PowerShell · Bash",
           more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · Ruby",
         },
@@ -146,7 +146,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "netbox-source-of-truth",
         title: "Единый источник правды по инфраструктуре",
         impact:
-          "Один источник правды вместо разрозненных таблиц · автоматика предлагает, человек утверждает",
+          "~2400 площадок и ~8900 устройств в одном учёте · автоматика предлагает, сливаю руками",
         stack: [
           "NetBox",
           "NetBox Branching",
@@ -157,14 +157,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "Спроектировал и вывел в прод учёт инфраструктуры крупной розничной сети: NetBox как источник правды на ~2400 площадок и ~8900 устройств, конвейер из 12 таймеров от сбора до контроля качества, включая инвентарь виртуализации. Опрос сетевого оборудования завёл не в боевую базу, а в отдельную ветку с ручным merge — автоматика ничего не удаляет. Курс на штатные механизмы вместо своей обвязки провёл жёстко; GitLab CI, TDD, 841 зелёный тест.",
+          "Инфраструктура крупной розничной сети жила в таблицах, которые никто не сверял. Собрал учёт на NetBox: ~2400 площадок, ~8900 устройств. Двенадцать таймеров тянут данные из учётных систем, сверяют, пишут обратно, проверяют качество. Опрос сетевого оборудования уходит в отдельную ветку, и сливаю её руками. Автоматика ничего не удаляет. Это правило, а не настройка. Репозиторий на GitLab CI, 841 зелёный тест.",
       },
       {
         group: "infra",
         slug: "keycloak-angie-2fa-exchange",
         title: "2FA / SSO для корпоративной почты на Keycloak + ANGIE",
         impact:
-          "Свой 2FA-провайдер на Keycloak, SSO на уровне web-сервера для OWA и Outlook-клиентов",
+          "Свой 2FA-провайдер на Keycloak, SSO на уровне веб-сервера для OWA и Outlook-клиентов",
         stack: [
           "Keycloak",
           "ANGIE",
@@ -175,14 +175,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "TOTP",
         ],
         summary:
-          "Спроектировал и внедрил кастомный 2FA-провайдер на базе Keycloak для доступа к корпоративной почте. ANGIE стоит фронтом перед OWA и Outlook-клиентами и обеспечивает SSO на уровне веб-сервера. 2FA проходит на стороне Keycloak без правки внутренних сервисов Exchange. Запущено в прод, ходит весь корпоративный поток.",
+          "Exchange не умеет второй фактор так, как было нужно. Трогать его внутренности никто бы не дал. Поставил ANGIE фронтом перед OWA и Outlook-клиентами, а 2FA вынес в Keycloak со своим провайдером. Сам Exchange не тронул ни строчкой. В проде, через эту схему ходит весь корпоративный почтовый поток.",
       },
       {
         group: "infra",
         slug: "enterprise-infrastructure-from-scratch",
         title: "Enterprise-инфраструктура с нуля",
         impact:
-          "4 площадки в 2 странах · 100–200 пользователей · 50+ серверов · mail/AD/networking + cert automation, собрано solo под ключ",
+          "4 площадки в 2 странах · 100–200 пользователей · 50+ серверов · почта, AD, сети и сертификаты, solo",
         stack: [
           "Exchange + DAG",
           "PMG",
@@ -193,14 +193,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "ACME → Exchange",
         ],
         summary:
-          "Спроектировал и построил корпоративную инфраструктуру для крупного заказчика с нуля: AD, Exchange с DAG между площадками, почтовый конвейер через PMG + HAProxy с SNI-роутингом, маршрутизация между площадками на WireGuard + GRE + OSPF + FRR, MikroTik RouterOS 7, автоматизация сертификатов ACME → Exchange. Трекинг сообщений, пригодный для расследования инцидентов, BookStack для документации. Под ключ, без передачи на стороны.",
+          "Четыре площадки в двух странах. На старте пустое поле. Поднял AD, Exchange с DAG между площадками, почту через PMG с HAProxy и SNI-роутингом, маршрутизацию на WireGuard + GRE + OSPF поверх MikroTik RouterOS 7. Сертификаты выпускаются и доезжают до Exchange сами. Сделал трекинг сообщений, по которому можно разобрать инцидент, и BookStack, чтобы всё это было записано. Один, от проекта до сдачи.",
       },
       {
         group: "infra",
         slug: "managed-access-client",
         title: "Управляемый клиент корпоративного доступа",
         impact:
-          "Два нативных клиента и сервер политик с подписанной политикой · панель в проде, парковая раскатка впереди",
+          "Нативные клиенты под Windows и macOS с подписанной политикой · доверие обновлений привязано к центру выдачи",
         stack: [
           ".NET 8",
           "Swift / AppKit",
@@ -211,14 +211,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Authenticode",
         ],
         summary:
-          "Разработал клиент корпоративного доступа под Windows и macOS и панель политик: политику подписал на сервере ECDSA P-256, клиент проверяет её встроенным ключом. Доверие обновлений привязал к выдающему центру, а не к отпечатку сертификата — иначе перевыпуск положил бы обновления всему парку. Данные машины и профиль пользователя развёл, вход в панель сделал доменным по Kerberos. Тесты довёл с 31 до 175. Панель в проде, парковой раскатки ещё нет.",
+          "Клиент корпоративного доступа под Windows и macOS плюс серверная панель политик. Политику подписываю ECDSA P-256, клиент проверяет её встроенным ключом. Доверие обновлений привязал к выдающему центру, а не к отпечатку. С отпечатком перевыпуск сертификата положил бы обновления сразу всему парку. Машинные данные и профиль пользователя развёл. Вход в панель доменный, по Kerberos. Тесты выросли с 31 до 175. Всё в проде.",
       },
       {
         group: "infra",
         slug: "internal-acme-ca",
         title: "Внутренний удостоверяющий центр с ACME",
         impact:
-          "Сертификаты по ACME на 60 дней с авто-продлением · подключение сервиса одной командой · выдача и подпись скриптов через панель",
+          "Сертификаты на 60 дней с авто-продлением · подключение сервиса одной командой · панель для остального",
         stack: [
           "ACME (RFC 8555)",
           "acme-ca-server",
@@ -229,14 +229,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "osslsigncode",
         ],
         summary:
-          "Построил внутренний центр выдачи сертификатов вместо ручной работы: промежуточный CA подписал у корпоративного Windows-CA, и весь парк доверяет выданным сертификатам без новых корней. Выпуск и продление — по ACME, срок 60 дней, подключение сервиса свёл к одной команде с reload-хуком: без него продлённый сертификат не доезжает до демона. Куда ACME не дотягивается, добавил панель выдачи и подпись скриптов с Linux. В проде пока Linux-путь.",
+          "Сертификаты выписывались руками, поэтому периодически не выписывались вовсе. Поднял внутренний центр выдачи. Промежуточный CA подписал у корпоративного Windows-CA, так что раскатывать новые корни никому не пришлось. ACME выдаёт на 60 дней и продлевает сам, подключить сервис теперь одна команда плюс reload-хук. Без хука продлённый сертификат до демона не доезжает. Куда ACME не дотянулся, там панель. В проде пока Linux.",
       },
       {
         group: "infra",
         slug: "report-access-gateway",
         title: "Шлюз доступа к отчётам по группам каталога",
         impact:
-          "Доступ к каждому отчёту решает членство в группе каталога, а не ручная выдача",
+          "Доступ к отчёту решает группа в каталоге. Раздавать руками больше не нужно",
         stack: [
           "Python / FastAPI",
           "Authlib",
@@ -247,14 +247,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "Собрал шлюз доступа к внутренним отчётам: не общий SSO на веб-сервере, а проверка группы каталога перед каждым отчётом, не выставляя наружу сам GitLab. В подписанную cookie положил не весь список членства, а пересечение с картой доступов — сотни имён групп не влезают в лимит 4 КБ и дают вечный цикл редиректов. Единицей прав сделал тип отчёта, а не выдачу вручную: карта «тип → группа» работает белым списком. Написал по TDD, 73 теста.",
+          "Отчёты лежали в GitLab Pages, доступ раздавали руками. Написал шлюз: вход через корпоративный OIDC, дальше проверка группы каталога перед каждым отчётом. Сам GitLab наружу не смотрит. Основная возня вышла с cookie. Весь список членства в 4 КБ не влезает, и вместо отчёта пользователь получал бесконечный редирект. Кладу туда только пересечение групп с картой доступов. Единица прав теперь тип отчёта. 73 теста, писал сразу с ними.",
       },
       {
         group: "infra",
         slug: "endpoint-software-delivery",
         title: "Самообслуживание рабочих мест: софт и VDI",
         impact:
-          "24 приложения обновляются сами · зависший ввод в VDI чинится без потери сессий · пока тестовая коллекция",
+          "24 приложения обновляются сами, большинство в проде · зависший ввод в VDI чинится без потери сессий",
         stack: [
           "MECM / SCCM",
           "PowerShell",
@@ -265,14 +265,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "RDS Connection Broker",
         ],
         summary:
-          "Собрал самообслуживание на парке около 4600 машин розничной сети: новый сервер управления поднял рядом с унаследованным, без остановки прода. Каталог обновляет себя сам: конвейер берёт версии вендоров, сверяет подпись и хэш, замещает старую сборку и раздаёт контент — 24 приложения. Для VDI написал портал: он чинит зависший ввод сохранением и возобновлением ВМ вместо перезагрузки, сессии не теряются. На парк не раскатывал: пока тестовая коллекция.",
+          "Парк около 4600 машин. Старый сервер управления трогать нельзя. Новый поднял рядом, прод не останавливал. Каталог обновляется сам: тянет версии вендоров, сверяет подпись и хэш, заменяет сборку и раздаёт дальше. 24 приложения, большинство уже в проде. Для VDI написал портал. Он чинит зависший ввод сохранением и возобновлением машины: пользователь не теряет сессии, а я не получаю звонок.",
       },
       {
         group: "infra",
         slug: "active-directory-gpo-audit",
         title: "Гигиена Active Directory: аудит и починка GPO",
         impact:
-          "Аудит и починка GPO/ACL на большом унаследованном лесу, phased rollout с возможностью отката",
+          "Аудит и починка GPO и ACL на сотнях политик, поэтапно и с путём отката на каждом шаге",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -282,23 +282,24 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "Провёл операционный аудит и ремонт GPO и ACL на большом унаследованном AD-лесу: 17 PowerShell-скриптов для выявления битых политик, восстановления Security Filtering после массового даунгрейда на Authenticated Users, аккуратной чистки NetLogon ACE через pre-flight проверку и поэтапное развёртывание (Phase 1/2/3). Каждое изменение — с бэкапом и путём отката. Финальные отчёты — на масштабе сотен GPO.",
+          "Лес большой и старый. Политики в нём десятилетиями правили разные люди. Написал 17 PowerShell-скриптов: найти битые, восстановить Security Filtering после массового даунгрейда на Authenticated Users, вычистить мёртвые NetLogon ACE. Каждый прогон начинается с pre-flight, дальше три фазы, на каждом шаге бэкап и путь отката. Сотни GPO. Ни одного изменения вслепую.",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Модернизация Active Directory",
-        impact: "Windows Server 2008 → 2022, 3 страны, мульти-сайт репликация, слияние доменов",
+        impact:
+          "Windows Server 2008 → 2022, три страны, мульти-сайт репликация, слияние доменов",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "Перевёл унаследованный AD-лес на актуальную версию и единую структуру: распределение ролей по трём площадкам, миграция объектов из нескольких доменов в один, предсказуемая репликация и снижение операционного риска.",
+          "Windows Server 2008 в проде, несколько доменов, репликация как повезёт. Перевёл лес на актуальную версию и единую структуру. Роли разложил по трём площадкам, объекты из нескольких доменов свёл в один. Репликация стала предсказуемой. Это, собственно, и было целью.",
       },
       {
         group: "infra",
         slug: "zabbix-grafana-automation",
         title: "Zabbix + Grafana и автоматизация",
         impact:
-          "Единый мониторинг с картой площадок; аварии больше не прячутся под бессрочными подавлениями",
+          "Единый мониторинг с картой площадок; аварии больше не отсиживаются под бессрочными подавлениями",
         stack: [
           "Zabbix",
           "Grafana",
@@ -309,41 +310,44 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "Собрал Zabbix с прокси-серверами в удалённых сетях, Grafana-дашборды для диагностики, рутину закрыл скриптами и Docker. Позже добавил географию: адреса площадок взял из уже имеющегося источника правды, координаты довёз штатной синхронизацией, без своего кода — около 2000 карт магазинов. Сократил бессрочные ручные подавления в разы, и аварии перестали под ними прятаться. Покрытие полное, но часть точек — с точностью до города.",
+          "Zabbix с прокси в удалённых сетях, дашборды в Grafana под диагностику, рутина закрыта скриптами и Docker. Позже добавил географию. Адреса площадок уже лежали в учёте, координаты доехали штатной синхронизацией, своего кода не понадобилось. Около 2000 карт магазинов. Отдельно разгрёб бессрочные ручные подавления: их было в разы больше, чем нужно, и аварии спокойно под ними отсиживались. Покрытие полное, часть точек до города.",
       },
       {
         group: "infra",
         slug: "office-datacenter-networking",
         title: "Сеть между офисами и ЦОД",
-        impact: "Site-to-site IPSec, резервные каналы, −66% затрат на интернет",
+        impact:
+          "Site-to-site IPSec, резервные каналы, счёт за интернет меньше примерно на две трети",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
         summary:
-          "Объединил несколько офисов и два ЦОД в единый управляемый контур через site-to-site IPSec VPN, переосмыслил каналы до ЦОД на MikroTik и OpenVPN, и пересобрал сетевое оборудование — расходы на интернет-связность упали примерно на две трети.",
+          "Несколько офисов и два ЦОД жили каждый сам по себе. Свёл в один контур через site-to-site IPSec. Каналы до ЦОД пересобрал на MikroTik и OpenVPN, часть железа переставил. Счёт за интернет упал примерно на две трети.",
       },
       {
         group: "infra",
         slug: "virtualization-vcenter",
         title: "Виртуализация и vCenter",
-        impact: "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, кластер на ~15 bare-metal",
+        impact:
+          "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, отказоустойчивый кластер примерно на 15 узлов",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
         summary:
-          "Консолидировал виртуализацию на VMware, конвертировал виртуальные машины с Hyper-V, поднял vCenter 7 и отказоустойчивый vSphere-кластер. Параллельно работал с облаком на vCloud Director.",
+          "Свёл виртуализацию на VMware. Машины с Hyper-V перегнал, поднял vCenter 7 и отказоустойчивый кластер примерно на 15 физических узлов. Рядом вёл облако на vCloud Director.",
       },
       {
         group: "infra",
         slug: "distributed-veeam-drp",
         title: "Распределённый Veeam и DRP",
-        impact: "Backup на трёх площадках, автоматическое копирование конфигов, DRP",
+        impact:
+          "Резервное копирование на трёх площадках, конфиги сетевого оборудования копируются сами, DRP",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
         summary:
-          "Выстроил распределённую систему резервного копирования на трёх площадках: полный Veeam-контур для виртуалок, автоматическое копирование конфигураций сетевого оборудования и документированный disaster recovery plan.",
+          "Резервное копирование на трёх площадках. Полный Veeam-контур под виртуалки, конфигурации сетевого оборудования копируются сами. План восстановления написан и лежит там, где его найдут. Не в столе. Проверял восстановлением, а не галочкой в отчёте.",
       },
       {
         group: "ai",
         slug: "mcp-infra-agent",
         title: "Агент вопрос-ответ по инфраструктуре на MCP",
         impact:
-          "Причина галлюцинаций — в слое инструментов, а не в модели · каталог в контексте 76 216 → 35 388 символов",
+          "Причина галлюцинаций оказалась в слое инструментов · каталог в контексте сжат вдвое",
         stack: [
           "MCP",
           "LLM tool-calling",
@@ -353,14 +357,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "Построил агента вопрос-ответ по инфраструктуре: LLM с tool-calling поверх MCP-серверов систем учёта и мониторинга, ответы в боте. Сверил ответы на 15 контрольных вопросах с фактами базы: честными вышли 6 из 15. Причину нашёл не в модели, а в слое инструментов: узкая схема запросов, нет честного подсчёта, жёсткие лимиты шагов. Каталог уходит модели на каждой итерации — сжал описания с 76 216 до 35 388 символов. В проде, спроса в команде пока нет.",
+          "Агент, которому можно задать вопрос про инфраструктуру словами. LLM с tool-calling поверх MCP-серверов учёта и мониторинга, ответы приходят в бот. Прогнал 15 контрольных вопросов и сверил каждый ответ с базой. Честными оказались шесть. Дело было не в модели: узкая схема запросов, нет честного подсчёта, лимит шагов душит. Всё это слой инструментов, там и чинилось. Каталог уходит модели каждую итерацию, поэтому сжал вдвое. В проде. Спроса пока нет.",
       },
       {
         group: "ai",
         slug: "multi-agent-dev-workflow",
         title: "Multi-agent workflow для разработки в соло",
         impact:
-          "3 AI-агента через MCP Memory Server плюс состязательное ревью диффа: выжили 13 находок из 38 и 14 из 32",
+          "Три агента через MCP Memory Server и состязательное ревью диффа: выжили 13 из 38 и 14 из 32",
         stack: [
           "Claude",
           "MCP",
@@ -370,16 +374,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Knowledge graph",
         ],
         summary:
-          "Собрал в соло multi-agent workflow для сложной системы: три AI-агента (стратег · хранитель базы знаний · разработчик в IDE) общаются через MCP Memory Server. Вторым контуром добавил состязательное ревью собственного диффа: несколько независимых линз, каждую находку пробуют опровергнуть два скептика. За два прогона выжили 13 из 38 и 14 из 32; подтверждение значит «не опровергли», внешней проверки нет.",
+          "Сложную систему тяну один, поэтому собрал вокруг себя трёх агентов: стратег, хранитель базы знаний и разработчик в IDE. Общаются через MCP Memory Server. Вторым заходом добавил состязательное ревью собственного диффа: несколько независимых линз, а потом два скептика пытаются каждую находку развалить. За два прогона выжили 13 из 38 и 14 из 32. «Подтвердилось» тут значит «не смогли опровергнуть». Внешней проверки нет.",
       },
       {
         group: "ai",
         slug: "llm-call-analysis-bi-crm",
         title: "LLM-анализ звонков и BI/CRM pipeline",
-        impact: "Выгрузка в BI на Python и автоматический разбор разговоров GPT-4",
+        impact:
+          "Выгрузка в BI на Python и автоматический разбор разговоров GPT-4 с отчётом в CRM",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "ВАТС Мегафон", "Python", "ChatGPT API"],
         summary:
-          "Настроил и сопровождал корпоративную АТС и ВАТС Мегафон, оптимизировал расходы на сотовую и интернет-связь. Написал выгрузку статистики на Python для BI и подключил GPT-4 к анализу разговоров с отчётом руководителю в CRM.",
+          "Вёл корпоративную АТС и облачную телефонию, попутно срезал расходы на связь. Статистику вынес в BI выгрузкой на Python. Раньше её считали руками. Разговоры отдал на разбор GPT-4, отчёт приходит руководителю прямо в CRM.",
       },
     ],
     timeline: [
@@ -421,7 +426,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Инфраструктура в двух странах: два ЦОД и 4 удалённых офиса.",
           "Миграция Hyper-V → ESXi, ESXi 5 → 6.7, запуск vCenter 7, распределённый Veeam на трёх площадках.",
           "Обновление AD с Windows Server 2008 до 2022 и консолидация доменов.",
-          "MS Exchange, WSUS, Zabbix, OpenVPN, Nextcloud, WTware — внедрение и эксплуатация.",
+          "MS Exchange, WSUS, Zabbix, OpenVPN, Nextcloud, WTware: внедрение и эксплуатация.",
           "Python-автоматизация и подключение GPT-4 к анализу разговоров ВАТС с отчётом в CRM.",
           "Снижение расходов на интернет-связность примерно на две трети.",
           "Менторинг трёх системных администраторов в удалённых офисах.",
@@ -473,7 +478,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2012 — 2014",
         location: "Екатеринбург",
         highlights: [
-          "Среди клиентов: телеканал MTV (позже — «Пятница») и несколько радиостанций.",
+          "Среди клиентов: телеканал MTV (позже «Пятница») и несколько радиостанций.",
           "Диагностика и устранение сбоев по всему фронту: инфраструктура, сети, телефония, поддержка пользователей.",
         ],
       },
@@ -503,7 +508,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "Курсы",
       contactEyebrow: "Контакты",
       contactTitle:
-        "Если нужен архитектор, который доводит сложную инфраструктуру до прода и потом её же эксплуатирует — напишите.",
+        "Если нужен архитектор, который доводит сложную инфраструктуру до прода и потом её же эксплуатирует, напишите.",
     },
     meta: {
       title: "Олег Темпалов — архитектор IT-инфраструктуры",
@@ -520,7 +525,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       phone: "+7 (922) 222-58-00",
       telegram: "https://t.me/tempalov",
       summary:
-        "End-to-end infrastructure — from bare metal and networks to AI agents running in production.",
+        "End-to-end infrastructure: bare metal and networks up to AI agents running in production.",
       status:
         "Open to Infrastructure Architect, Solutions Architect or Head of Infrastructure roles. Remote, full-time or contract.",
       desiredRole: "IT Infrastructure Architect",
@@ -537,7 +542,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "Systems, identity and mail",
           intro:
-            "The core of corporate infrastructure — hypervisor to single sign-on.",
+            "The core of corporate infrastructure: hypervisor up to single sign-on.",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
@@ -579,7 +584,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "netbox-source-of-truth",
         title: "Single source of truth for infrastructure",
         impact:
-          "One source of truth instead of scattered spreadsheets · automation proposes, a human approves",
+          "~2,400 sites and ~8,900 devices in one inventory · automation proposes, I merge by hand",
         stack: [
           "NetBox",
           "NetBox Branching",
@@ -590,14 +595,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "Designed and shipped an inventory layer for a large retail chain: NetBox as the source of truth over ~2,400 sites and ~8,900 devices, a pipeline of 12 timers from collection to data-quality checks, virtualization inventory included. Discovery lands in an isolated branch a human merges, not in the live database; automation deletes nothing. Held the line on native features over custom glue; GitLab CI, TDD, 841 green tests.",
+          "A large retail chain ran its infrastructure out of spreadsheets nobody reconciled. I built the inventory on NetBox: ~2,400 sites, ~8,900 devices. Twelve systemd timers pull from the source systems, reconcile, write back, check quality. Network discovery lands in a separate branch. I merge that one by hand. Automation deletes nothing. That's a rule, not a setting. GitLab CI on the repo, 841 green tests.",
       },
       {
         group: "infra",
         slug: "keycloak-angie-2fa-exchange",
-        title: "2FA / SSO for corporate mail with Keycloak + ANGIE",
+        title: "2FA / SSO for mail on Keycloak + ANGIE",
         impact:
-          "Custom Keycloak-based 2FA provider, SSO at the web-server layer for OWA and Outlook clients",
+          "Custom Keycloak 2FA provider, SSO at the web-server layer for OWA and Outlook clients",
         stack: [
           "Keycloak",
           "ANGIE",
@@ -608,14 +613,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "TOTP",
         ],
         summary:
-          "Designed and rolled out a custom Keycloak-based 2FA provider for corporate mail access. ANGIE sits in front of OWA and Outlook clients and handles SSO at the web-server layer. 2FA runs on the Keycloak side without touching Exchange internals. Running in production today, handling all corporate mail traffic.",
+          "Exchange can't do a second factor the way we needed. And nobody was going to let me near its internals. So ANGIE went in front of OWA and the Outlook clients, and 2FA moved into Keycloak behind a provider I wrote. Exchange itself I never touched. Not one line. It runs in production. All corporate mail goes through it.",
       },
       {
         group: "infra",
         slug: "enterprise-infrastructure-from-scratch",
         title: "Enterprise infrastructure from scratch",
         impact:
-          "4 sites in 2 countries · 100–200 users · 50+ servers · mail/AD/networking + cert automation, built solo turnkey",
+          "4 sites in 2 countries · 100–200 users · 50+ servers · mail, AD, networking and certs, solo",
         stack: [
           "Exchange + DAG",
           "PMG",
@@ -626,14 +631,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "ACME → Exchange",
         ],
         summary:
-          "Designed and built corporate infrastructure for a large client from scratch: AD, Exchange with DAG between sites, mail pipeline via PMG + HAProxy with SNI routing, multi-site routing on WireGuard + GRE + OSPF + FRR, MikroTik RouterOS 7, ACME → Exchange cert automation pipeline. Audit-grade message tracking, BookStack for internal docs. End-to-end ownership, no handoffs.",
+          "Four sites, two countries. Empty field at the start. I stood up AD, Exchange with a DAG across sites, mail through PMG with HAProxy and SNI routing. Routing itself on WireGuard + GRE + OSPF over MikroTik RouterOS 7. Certificates issue and reach Exchange on their own. Message tracking good enough to take an incident apart. BookStack so the whole thing is written down. Built it solo, start to finish.",
       },
       {
         group: "infra",
         slug: "managed-access-client",
         title: "Managed corporate access client",
         impact:
-          "Two native clients and a policy server with signed policy · panel in production, fleet rollout still ahead",
+          "Native Windows and macOS clients with signed policy · update trust pinned to the issuing CA",
         stack: [
           ".NET 8",
           "Swift / AppKit",
@@ -644,14 +649,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Authenticode",
         ],
         summary:
-          "Built a corporate access client for Windows and macOS plus its policy panel: the server signs the policy with ECDSA P-256, the client verifies it with an embedded key. Pinned update trust to the issuing CA, not a thumbprint — a reissue would otherwise kill updates fleet-wide. Split machine data from user data, put admin sign-in on Kerberos, grew tests from 31 to 175. The panel is in production; fleet rollout is still ahead.",
+          "Windows and macOS clients for corporate access, plus the policy panel behind them. The server signs policy with ECDSA P-256, the client checks it with an embedded key. Update trust is pinned to the issuing CA, not a thumbprint. Pin the thumbprint and one reissue kills updates fleet-wide. I keep machine data and the user profile apart. Panel login is a domain account, over Kerberos. Tests went from 31 to 175. All in production.",
       },
       {
         group: "infra",
         slug: "internal-acme-ca",
         title: "Internal certificate authority with ACME",
         impact:
-          "60-day ACME certificates with auto-renewal · service onboarding in one command · panel issuance and script signing",
+          "60-day certificates with auto-renewal · onboarding a service is one command · a panel for the rest",
         stack: [
           "ACME (RFC 8555)",
           "acme-ca-server",
@@ -662,14 +667,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "osslsigncode",
         ],
         summary:
-          "Built an internal CA to replace manual issuance: the intermediate is signed by the corporate Windows CA, so its certificates are trusted fleet-wide, no new root. ACME issues and renews 60-day certificates, and onboarding a service is one command plus a reload hook — without it a renewal never reaches the daemon. Where ACME cannot reach, a panel issues certificates and signs scripts from Linux. Only the Linux path is live.",
+          "Certificates went out by hand, so sometimes they didn't go out at all. I stood up an internal CA. The intermediate is signed by the corporate Windows CA, so nobody had to roll out a new root. ACME issues 60-day certs and renews them itself. Onboarding a service is one command plus a reload hook. Skip the hook and the renewed cert never reaches the daemon. Where ACME can't reach, a panel. Linux only in production so far.",
       },
       {
         group: "infra",
         slug: "report-access-gateway",
         title: "Report access gateway on directory groups",
         impact:
-          "The unit of permission became the report type, not a hand-granted account; group membership decides access",
+          "A directory group decides access to a report. No more handing it out one by one.",
         stack: [
           "Python / FastAPI",
           "Authlib",
@@ -680,14 +685,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "Built an access gateway for internal reports: not blanket SSO at the web server, but a directory group check before every report, without exposing GitLab itself. The signed cookie holds only the intersection of the user's groups with the access map — hundreds of group names overflow the 4 KB limit and turn login into a redirect loop. Made the report type the unit of permission, not a manual grant. Written test-first, 73 tests.",
+          "Reports sat in GitLab Pages, access handed out by hand. I wrote a gateway: sign-in through the corporate OIDC, then a group check before every report. GitLab itself never faces outward. The cookie was the fiddly part. A full group list blows the 4 KB limit, and the user got an endless redirect. Now it holds only groups that intersect the access map. The unit of permission is now the report type. 73 tests, written alongside.",
       },
       {
         group: "infra",
         slug: "endpoint-software-delivery",
         title: "Workplace self-service: software and VDI",
         impact:
-          "24 apps update themselves · stuck VDI input cleared without losing open sessions · test collection for now",
+          "24 apps update themselves, most already in production · stuck VDI input cleared without losing sessions",
         stack: [
           "MECM / SCCM",
           "PowerShell",
@@ -698,14 +703,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "RDS Connection Broker",
         ],
         summary:
-          "Built self-service for a retail fleet of ~4,600 machines: stood up a new management site beside the legacy one, no downtime. The catalog updates itself: the pipeline pulls vendor versions, checks the signature and hash, supersedes the old build, and ships it — 24 apps today. For VDI I wrote a portal that clears stuck input with a save/resume, not a reboot, so open sessions survive. No fleet rollout yet: test collection only.",
+          "Fleet of about 4,600 machines. The legacy management server was off limits, so the new one went up beside it, production never stopped. The catalog updates itself: pulls vendor versions, checks signature and hash, supersedes the build, ships it on. 24 apps, most already in production. For VDI I wrote a portal. It clears stuck input by saving and resuming the machine. The user keeps their sessions, and I don't get the call.",
       },
       {
         group: "infra",
         slug: "active-directory-gpo-audit",
-        title: "Active Directory hygiene: GPO audit and repair",
+        title: "Active Directory hygiene: GPO repair",
         impact:
-          "Operational audit and repair of GPO/ACL on a large legacy forest, phased rollback-safe rollout",
+          "GPO and ACL audit and repair across hundreds of policies, phased, with a rollback path at every step",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -715,24 +720,24 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "Ran operational audit and repair of GPO and ACL across a large legacy AD forest: 17 PowerShell scripts to detect broken policies, restore Security Filtering after a mass downgrade to Authenticated Users, cleanly remove stale NetLogon ACEs via pre-flight checks and phased rollout (Phase 1/2/3). Every change had a backup and rollback path. Final reports across hundreds of GPOs.",
+          "Big forest, inherited. Different people had been editing its policies for decades. I wrote 17 PowerShell scripts: find the broken ones, restore Security Filtering after a mass downgrade to Authenticated Users, clear out dead NetLogon ACEs. Every run starts with a pre-flight, then three phases, with a backup and a rollback path at each step. Hundreds of GPOs. Not one blind change.",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Active Directory modernization",
         impact:
-          "Windows Server 2008 → 2022, three sites, multi-site replication, merged domains",
+          "Windows Server 2008 → 2022, three countries, multi-site replication, merged domains",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "Moved the legacy AD forest onto a current version and a unified structure: role distribution across three sites, object migration from multiple domains into one, predictable replication, and reduced operational risk.",
+          "Windows Server 2008 in production, several domains, replication whenever it felt like it. I moved the forest onto a current version, one structure. Roles went out across three sites. Objects from several domains came into one. Replication became predictable. That was the whole point.",
       },
       {
         group: "infra",
         slug: "zabbix-grafana-automation",
         title: "Zabbix + Grafana and automation",
         impact:
-          "Unified monitoring with a site map; outages no longer hide under open-ended manual suppressions",
+          "One monitoring stack with a site map; outages no longer hide under open-ended suppressions",
         stack: [
           "Zabbix",
           "Grafana",
@@ -743,41 +748,44 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "Built Zabbix with remote-network proxies and Grafana dashboards for diagnostics, and moved routine work into scripts and Docker. Then added geography: pulled site addresses from the existing source of truth; the stock sync carried coordinates over, no custom code, about 2,000 store maps. Cut open-ended manual suppressions several-fold; outages no longer hide under them. Coverage is complete, though some points are city-level.",
+          "Zabbix with proxies in remote networks, Grafana dashboards for diagnostics. Routine went into scripts and Docker. Geography came later. Addresses were already in the inventory, coordinates came over with the built-in sync. No code of my own. About 2,000 store maps. Then I cleared the open-ended suppressions: far more than needed, and outages were quietly waiting them out. Coverage is complete, some points only to city level.",
       },
       {
         group: "infra",
         slug: "office-datacenter-networking",
         title: "Office-to-DC networking",
-        impact: "Site-to-site IPSec, redundant channels, ~66% lower internet cost",
+        impact:
+          "Site-to-site IPSec, backup links, internet bill down by about two thirds",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
         summary:
-          "Connected multiple offices and two data centers into a single managed environment via site-to-site IPSec VPN, rebuilt channels to the DCs on MikroTik and OpenVPN, and reworked network equipment — dropping internet connectivity costs by roughly two-thirds.",
+          "Several offices and two data centers, each living on its own. I pulled them into one managed perimeter over site-to-site IPSec. Links to the data centers I rebuilt on MikroTik and OpenVPN, and moved some hardware. The internet bill dropped by roughly two thirds.",
       },
       {
         group: "infra",
         slug: "virtualization-vcenter",
         title: "Virtualization and vCenter",
-        impact: "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, ~15 bare-metal cluster",
+        impact:
+          "Hyper-V → ESXi, ESXi 5 → 6.7, vCenter 7, a fault-tolerant cluster of about 15 nodes",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
         summary:
-          "Consolidated virtualization on VMware, converted VMs from Hyper-V, brought up vCenter 7, and operated a fault-tolerant vSphere cluster. Worked alongside a vCloud Director-based cloud.",
+          "Consolidated virtualization on VMware. Converted the Hyper-V machines over, stood up vCenter 7, and a fault-tolerant cluster on about 15 physical nodes with it. Ran a vCloud Director cloud alongside.",
       },
       {
         group: "infra",
         slug: "distributed-veeam-drp",
         title: "Distributed Veeam and DRP",
-        impact: "Backup on three sites, automated config backups, DRP",
+        impact:
+          "Backup across three sites, network device configs copy themselves, DRP",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
         summary:
-          "Built a distributed backup system across three sites: full Veeam coverage for VMs, automated backups of network equipment configurations, and a documented disaster recovery plan.",
+          "Backup across three sites. Full Veeam coverage for the VMs, network device configs copy themselves. The recovery plan is written down and kept where people will find it. I checked it by restoring. Not by a tick in a report.",
       },
       {
         group: "ai",
         slug: "mcp-infra-agent",
         title: "Infrastructure Q&A agent over MCP",
         impact:
-          "Hallucinations traced to the tool layer, not the model · tool catalog in context 76,216 → 35,388 characters",
+          "Hallucinations traced to the tool layer · tool catalog in context cut in half",
         stack: [
           "MCP",
           "LLM tool-calling",
@@ -787,14 +795,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "Built an infrastructure Q&A agent: an LLM with tool-calling over MCP servers for inventory and monitoring, delivered in a bot. Checked 15 control questions against database facts: only 6 held up. The cause was the tool layer, not the model: a narrow query schema, no reliable count, step limits too low. The catalog is resent every iteration, so I compressed it from 76,216 to 35,388 characters. In production, unused so far.",
+          "An agent you ask about infrastructure in plain words. LLM with tool-calling over MCP servers for inventory and monitoring, answers in a bot. I ran 15 test questions, checking each answer against the database. Six held up. Not the model: narrow query schema, no honest counting, step limits choking it. All tool layer. That's where it got fixed. The catalog is resent every iteration, so I halved it. In production. No demand yet.",
       },
       {
         group: "ai",
         slug: "multi-agent-dev-workflow",
         title: "Multi-agent workflow for solo development",
         impact:
-          "3 AI agents over an MCP Memory Server plus adversarial diff review: 13 findings of 38 and 14 of 32 survived",
+          "Three agents over an MCP Memory Server plus adversarial diff review: 13 of 38 and 14 of 32 survived",
         stack: [
           "Claude",
           "MCP",
@@ -804,16 +812,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Knowledge graph",
         ],
         summary:
-          "Designed a multi-agent workflow for solo development of a complex system: three AI agents (strategist · vault keeper · in-IDE developer) talk over an MCP Memory Server. In a second loop I review my own diff adversarially — several independent lenses, then two skeptics try to disprove each finding. Two runs left 13 of 38 and 14 of 32 standing; confirmed only means nobody refuted it, with no external check.",
+          "I carry a complex system alone, so I built three agents around me: a strategist, a knowledge-base keeper, a developer in the IDE. They talk over an MCP Memory Server. On a second pass I added adversarial review of my own diff: several independent lenses, then two skeptics tearing each finding apart. Two runs, 13 of 38 and 14 of 32 survived. \"Confirmed\" here means nobody could refute it. There's no outside check.",
       },
       {
         group: "ai",
         slug: "llm-call-analysis-bi-crm",
         title: "LLM call analysis and BI/CRM pipeline",
-        impact: "BI exports from the virtual PBX and automatic GPT-4 call review",
+        impact:
+          "Python exports into BI and automatic GPT-4 call review, report lands in the CRM",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "Megafon PBX", "Python", "ChatGPT API"],
         summary:
-          "Ran the corporate PBX and Megafon virtual PBX, optimized mobile and internet costs. Wrote Python exporters that fed BI and integrated GPT-4 to analyze call content with a report pushed back into the CRM.",
+          "Ran the corporate PBX and a hosted virtual PBX, and cut the phone bill along the way. Stats went into BI through a Python export. Calls went to GPT-4 for review. The report lands with the manager, right in the CRM.",
       },
     ],
     timeline: [
@@ -884,7 +893,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2015 — 2018",
         location: "Yekaterinburg",
         highlights: [
-          "Ran my own e-commerce store, Gift66 — gifts and gift certificates in Yekaterinburg.",
+          "Ran my own e-commerce store, Gift66: gifts and gift certificates in Yekaterinburg.",
           "Full lifecycle: launch, marketing and promotion, eventual wind-down.",
           "Ran in parallel with engineering work: P&L, marketing, ops. Helps read business needs, not just tickets.",
         ],
@@ -937,7 +946,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "Education",
       contactEyebrow: "Contact",
       contactTitle:
-        "If you need an architect who takes complex infrastructure to production and then runs it — drop a line.",
+        "If you need an architect who takes complex infrastructure to production and then runs it, drop a line.",
     },
     meta: {
       title: "Oleg Tempalov — IT Infrastructure Architect",
@@ -954,9 +963,9 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       phone: "+7 (922) 222-58-00",
       telegram: "https://t.me/tempalov",
       summary:
-        "从基础设施到生产级 AI 智能体,提供全链路交付。专注中俄技术对接,助力中国企业出海俄罗斯落地。",
+        "从基础设施到生产级 AI 智能体，提供全链路交付。专注中俄技术对接，助力中国企业出海俄罗斯落地。",
       status:
-        "面向出海俄罗斯市场的中国科技企业,提供基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。远程协作,接受全职或长期合同,可签署 NDA。",
+        "面向出海俄罗斯市场的中国科技企业，提供基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。远程协作，接受全职或长期合同，可签署 NDA。",
       desiredRole: "IT 基础设施架构师 / 跨境技术顾问",
     },
     nav: {
@@ -971,28 +980,28 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         {
           label: "系统、Active Directory 与邮件",
           intro:
-            "企业基础设施的核心:从虚拟化平台到统一身份认证。",
+            "企业基础设施的核心：从虚拟化平台到统一身份认证。",
           body: "VMware ESXi · vCenter · Proxmox · Veeam · MS Exchange (DAG) · AD DS · Windows Server · Keycloak · Zabbix",
           more: "Postfix · Dovecot · mailcow · PMG · AD CS · AD FS · DFS · WSUS · WEC · SCCM · RDS+FSLogix · Telegraf · InfluxDB",
         },
         {
           label: "网络、代理与安全",
           intro:
-            "把多个站点连成统一网络,并守住安全边界。",
+            "把多个站点连成统一网络，并守住安全边界。",
           body: "MikroTik · WireGuard · OSPF · IPSec · GRE · angie · nginx · HAProxy · Wazuh",
           more: "Ubiquiti · pfSense · OPNsense · OpenVPN · Traefik · Caddy · CrowdSec · ModSecurity · Cloudflare WAF · Suricata · Graylog",
         },
         {
           label: "俄罗斯本地云与自动化",
           intro:
-            "一切重复性工作皆化为代码:IaC、配置、容器。",
+            "一切重复性工作皆化为代码：IaC、配置、容器。",
           body: "Yandex Cloud · VK Cloud · AWS · GCP · Azure · Terraform · Ansible · Docker · Python · PowerShell",
           more: "Selectel · cloud.ru · Timeweb · PowerShell DSC · cloud-init · GitLab CI · Bash · Ruby",
         },
         {
           label: "AI 智能体",
           intro:
-            "把 LLM 接入生产环境创造价值,而不是停留在演示里。",
+            "把 LLM 接入生产环境创造价值，而不是停留在演示里。",
           body: "OpenAI · Anthropic · MCP · Vector DB · LangChain · Agentic Workflow",
         },
       ],
@@ -1013,7 +1022,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "netbox-source-of-truth",
         title: "基础设施的单一事实源",
         impact:
-          "以单一事实源取代分散表格 · 自动化只提议,由人工确认",
+          "约2400个站点、约8900台设备一本台账 · 自动化只提议，合并由我手工做",
         stack: [
           "NetBox",
           "NetBox Branching",
@@ -1024,14 +1033,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "为大型零售连锁企业设计并上线基础设施台账体系:以 NetBox 作为单一事实源,覆盖约2400个站点与约8900台设备,由12个定时器组成的流水线从数据采集一直做到数据质量校验,并把虚拟化台账纳入其中。网络设备轮询不写入生产库,而是进入独立数据分支,由人工合并;自动化从不执行删除。严格执行优先使用产品原生能力而非自研胶水层的路线;GitLab CI、TDD、841个测试全部通过。",
+          "大型零售连锁的基础设施都散在表格里，没人核对。我用 NetBox 建了台账：约2400个站点，约8900台设备。12个定时器从各系统取数、比对、回写、查质量。网络设备的轮询结果进独立分支，由我手工合并。自动化不删任何东西。这是规矩，不是配置项。仓库跑 GitLab CI，841个测试全绿。",
       },
       {
         group: "infra",
         slug: "keycloak-angie-2fa-exchange",
-        title: "Keycloak + ANGIE 企业邮件 2FA / SSO",
+        title: "Keycloak + ANGIE 邮件 2FA",
         impact:
-          "基于 Keycloak 的自定义 2FA 提供方,在 Web 层为 OWA 与 Outlook 客户端实现 SSO",
+          "Keycloak 自研 2FA 提供方，Web 层为 OWA 和 Outlook 客户端做 SSO",
         stack: [
           "Keycloak",
           "ANGIE",
@@ -1042,14 +1051,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "TOTP",
         ],
         summary:
-          "为企业邮件设计并落地基于 Keycloak 的自定义 2FA 提供方。ANGIE 位于 OWA 与 Outlook 客户端前端,在 Web 层统一处理 SSO。2FA 完全在 Keycloak 侧实现,无需侵入 Exchange 内部。已上线生产,承载全公司邮件流量。",
+          "Exchange 做不到我们要的第二因子。它的内部也没人肯让动。于是把 ANGIE 放到 OWA 和 Outlook 客户端前面，2FA 挪进 Keycloak，提供方自己写。Exchange 一行没改。已上生产，全公司邮件流量都走这条路。",
       },
       {
         group: "infra",
         slug: "enterprise-infrastructure-from-scratch",
         title: "从零搭建企业基础设施",
         impact:
-          "2 个国家 4 个站点 · 100–200 用户 · 50+ 台服务器 · 邮件 / AD / 网络 + 证书自动化,独立完成全周期交付",
+          "2国4站点 · 100–200用户 · 50+台服务器 · 邮件、AD、网络、证书，一个人做完",
         stack: [
           "Exchange + DAG",
           "PMG",
@@ -1060,14 +1069,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "ACME → Exchange",
         ],
         summary:
-          "为大型客户从零设计并搭建企业基础设施:AD、跨站点 Exchange DAG、PMG + HAProxy SNI 路由的邮件链路、WireGuard + GRE + OSPF + FRR 的多站点路由,MikroTik RouterOS 7,ACME → Exchange 证书自动化。满足取证要求的邮件审计追溯链路,配套 BookStack 文档体系。全程独立交付,无对接断层。",
+          "两个国家，四个站点。开局一片空白。搭起 AD、跨站点 Exchange DAG、PMG 加 HAProxy SNI 路由的邮件链路。路由本身跑在 MikroTik RouterOS 7 上的 WireGuard + GRE + OSPF。证书自己签发，自己装到 Exchange。做了能查清事故的邮件追溯，又用 BookStack 把这些都记下来。一个人，从设计到交付。",
       },
       {
         group: "infra",
         slug: "managed-access-client",
         title: "企业受控访问客户端",
         impact:
-          "两个原生客户端与策略服务端,策略带签名 · 面板已上生产,尚未全量推送终端",
+          "Windows 与 macOS 原生客户端，策略带签名 · 更新信任绑到签发 CA",
         stack: [
           ".NET 8",
           "Swift / AppKit",
@@ -1078,14 +1087,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Authenticode",
         ],
         summary:
-          "为 Windows 与 macOS 开发了企业受控访问客户端及配套策略面板:服务端用 ECDSA P-256 签名策略,客户端用内置密钥校验。更新信任绑定到签发 CA 而非证书指纹,否则证书重新签发会让全部终端失去更新。机器数据与用户配置分离,登录面板走域账号 Kerberos。测试从 31 增至 175。面板已在生产运行,终端侧尚未全量推送。",
+          "Windows 和 macOS 的企业访问客户端，加一个服务端策略面板。策略我用 ECDSA P-256 签，客户端拿内置密钥验。更新的信任绑到签发 CA，不绑指纹。绑指纹的话，证书一换，全部终端立刻更新失败。机器数据和用户配置分开。面板登录走域账号 Kerberos。测试从31条涨到175条。都在生产跑着。",
       },
       {
         group: "infra",
         slug: "internal-acme-ca",
         title: "内部 ACME 证书颁发机构",
         impact:
-          "ACME 签发 60 天证书并自动续期 · 一条命令完成服务接入 · 面板签发与脚本签名",
+          "证书60天有效、自动续期 · 服务接入一条命令 · 其余走面板",
         stack: [
           "ACME (RFC 8555)",
           "acme-ca-server",
@@ -1096,14 +1105,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "osslsigncode",
         ],
         summary:
-          "搭建内部证书颁发机构,替代手工签发:中间 CA 由企业 Windows CA 签发,签出的证书在全网默认受信,无需分发新的根证书。签发与续期走 ACME,有效期 60 天,服务接入简化为一条命令并配置 reload 钩子——否则续期后的证书不会加载到运行中的守护进程。ACME 覆盖不到的主机改由面板签发,并支持在 Linux 上完成脚本签名。目前仅 Linux 接入路径在生产使用。",
+          "证书靠手工签，于是时不时干脆没人签。我搭了内部颁发机构。中间 CA 由企业 Windows CA 签，新根证书谁都不用装。ACME 签60天，自动续期。服务接入就一条命令加一个 reload 钩子。没有钩子，续下来的证书到不了守护进程。ACME 够不着的地方，用面板签。生产上目前只有 Linux。",
       },
       {
         group: "infra",
         slug: "report-access-gateway",
         title: "基于目录组的报告访问网关",
         impact:
-          "权限单位从手工开通改为报告类型,由目录组成员关系决定",
+          "报告能不能看，由目录组说了算，不用再手工开通",
         stack: [
           "Python / FastAPI",
           "Authlib",
@@ -1114,14 +1123,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "搭建了内部报告的访问网关:不是 Web 层的统一 SSO,而是在每次打开报告前校验目录组成员关系,同时不把 GitLab 本身暴露到外网。关键取舍是签名 cookie 中只放用户组与访问映射的交集——数百个组名会超出 4 KB 上限,导致无限重定向。权限单位改为报告类型而非手工开通,该映射同时充当白名单。全程 TDD,73 个测试。",
+          "报告放在 GitLab Pages，权限一个个手工开。我写了个网关：先走企业 OIDC 登录，再在每份报告前校验目录组。GitLab 本身不对外。最费劲的是 cookie。整份组列表塞不进 4KB，用户等来的不是报告，是无限重定向。现在只放组和访问映射的交集。权限单位改成报告类型。73个测试，边写边测。",
       },
       {
         group: "infra",
         slug: "endpoint-software-delivery",
-        title: "员工终端自助:软件分发与 VDI",
+        title: "终端自助：软件分发与 VDI",
         impact:
-          "24 个应用自动更新 · VDI 卡死输入修复不丢会话 · 目前仅测试集合",
+          "24个应用自动更新，多数已上生产 · VDI 卡死修复不丢会话",
         stack: [
           "MECM / SCCM",
           "PowerShell",
@@ -1132,14 +1141,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "RDS Connection Broker",
         ],
         summary:
-          "为一家零售企业约4600台设备搭建自助体系:在遗留管理站点旁并行新建管理站点,生产不中断;软件目录自动更新——流水线获取厂商版本、校验签名与哈希、用新版本取代旧版本并分发内容,目前24个应用。VDI 侧写了一个门户,用保存并恢复虚拟机代替重启修复卡死的输入,已打开的会话不会丢失。尚未全量推送,当前仅部署到测试集合。",
+          "大约4600台终端。遗留的管理服务器动不得，新的就在旁边并行搭起来，生产没停。目录自己更新：抓厂商版本，校验签名和哈希，替换旧包，继续分发。24个应用，大多已在生产。VDI 那边写了个门户。它靠保存并恢复虚拟机来修卡死的输入：用户不丢会话，我也不用接电话。",
       },
       {
         group: "infra",
         slug: "active-directory-gpo-audit",
-        title: "AD 治理:GPO 审计与修复",
+        title: "AD 治理：GPO 审计与修复",
         impact:
-          "对大型遗留林进行 GPO / ACL 审计修复,分阶段安全回滚",
+          "数百条 GPO 与 ACL 的审计修复，分阶段推进，每步可回滚",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -1149,24 +1158,24 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "对大型遗留 AD 林进行运维层面的 GPO 与 ACL 审计修复:编写 17 个 PowerShell 脚本检测异常策略,恢复 Authenticated Users 误回退后的 Security Filtering,通过预检与分阶段(Phase 1 / 2 / 3)清理 NetLogon 中过期的 ACE。每次变更均附备份与回滚方案,最终输出覆盖数百条 GPO 的完整报告。",
+          "林很大，是接手来的。里面的策略几十年里被不同的人改过。写了17个 PowerShell 脚本：找出坏掉的策略，修回被批量降到 Authenticated Users 的 Security Filtering，清掉失效的 NetLogon ACE。每次跑先做预检，再分三个阶段。每步都有备份和回滚路径。几百条 GPO。没有一次是盲改。",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Active Directory 现代化",
         impact:
-          "Windows Server 2008 → 2022,三站点多副本复制,多域合并",
+          "Windows Server 2008 → 2022，三个国家，多站点复制，多域合并",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "将遗留 AD 林升级至最新版本并统一结构:跨三个站点的角色分布、多域对象迁移合并、稳定可预期的复制机制,显著降低运维风险。",
+          "生产上跑着 Windows Server 2008，好几个域，复制看运气。把林升到当前版本，结构统一。角色分到三个站点，多个域的对象合并成一个。复制变得可预期。这本来就是目的。",
       },
       {
         group: "infra",
         slug: "zabbix-grafana-automation",
-        title: "Zabbix + Grafana 与运维自动化",
+        title: "Zabbix + Grafana 与自动化",
         impact:
-          "统一监控加门店地图,故障不再被无截止时间的人工抑制掩盖",
+          "统一监控加站点地图；故障不再躲在无期限抑制下面",
         stack: [
           "Zabbix",
           "Grafana",
@@ -1177,41 +1186,44 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Docker",
         ],
         summary:
-          "搭建带远端代理的 Zabbix 与 Grafana 仪表盘用于快速定位故障,日常运维用脚本和 Docker 收口。后来补上地理维度:站点地址取自已有的单一事实源,坐标通过原生同步机制进入监控,没有自己写代码,产出约2000张门店地图。又把无截止时间的人工抑制压减数倍,故障不再被它们掩盖。覆盖是完整的,但部分点位只精确到城市。",
+          "Zabbix 加远端网络里的代理，Grafana 仪表盘用来定位故障。日常活儿用脚本和 Docker 收口。后来补了地理维度。站点地址台账里本来就有，坐标靠自带的同步拿过来，自己的代码一行没写。约2000张门店地图。又清了无期限的人工抑制：数量比该有的多出好几倍，故障就安稳躲在下面。覆盖是全的，有些点只到城市一级。",
       },
       {
         group: "infra",
         slug: "office-datacenter-networking",
-        title: "办公到数据中心网络",
-        impact: "站点间 IPSec、冗余链路、互联网成本下降约 66%",
+        title: "办公室与数据中心互联",
+        impact:
+          "站点间 IPSec、备份链路，互联网账单降了约三分之二",
         stack: ["MikroTik", "Ubiquiti", "TP-Link", "IPSec", "OpenVPN", "VLAN"],
         summary:
-          "将多个办公室与两个数据中心通过站点间 IPSec VPN 整合为统一受控环境,在 MikroTik 与 OpenVPN 上重建数据中心链路,重构网络设备,使互联网接入成本下降约三分之二。",
+          "几个办公室和两个数据中心各过各的。用站点间 IPSec 把它们并成一个受控环境。到数据中心的链路在 MikroTik 和 OpenVPN 上重做，一部分设备换了位置。互联网账单降了大概三分之二。",
       },
       {
         group: "infra",
         slug: "virtualization-vcenter",
         title: "虚拟化与 vCenter",
-        impact: "Hyper-V → ESXi,ESXi 5 → 6.7,vCenter 7,约 15 台裸金属集群",
+        impact:
+          "Hyper-V → ESXi，ESXi 5 → 6.7，vCenter 7，约15节点高可用集群",
         stack: ["VMware ESXi", "vCenter", "Hyper-V", "Proxmox", "vCloud Director"],
         summary:
-          "在 VMware 上统一虚拟化平台,完成 Hyper-V 虚机迁移,部署 vCenter 7,运行高可用 vSphere 集群。同时运维基于 vCloud Director 的私有云。",
+          "虚拟化统一到 VMware。Hyper-V 上的虚机全部转过来，部署 vCenter 7。又做了约15台物理节点的高可用集群。同时还带着 vCloud Director 的云。",
       },
       {
         group: "infra",
         slug: "distributed-veeam-drp",
         title: "分布式 Veeam 与 DRP",
-        impact: "三站点备份,网络设备配置自动备份,完整 DRP 文档",
+        impact:
+          "三站点备份，网络设备配置自动留存，配套 DRP",
         stack: ["Veeam B&R", "Synology", "TrueNAS", "NextCloud", "rsync"],
         summary:
-          "建设跨三个站点的分布式备份体系:VM 由 Veeam 全量覆盖,网络设备配置自动备份,DRP(灾难恢复计划)文档化。",
+          "三个站点都做备份。虚机由 Veeam 全量覆盖，网络设备配置自动备份。恢复计划写好了，放在找得到的地方。验证靠真恢复，不是报告上打个勾。",
       },
       {
         group: "ai",
         slug: "mcp-infra-agent",
         title: "基于 MCP 的基础设施问答智能体",
         impact:
-          "幻觉根因在工具层而非模型 · 上下文中的工具目录 76216 → 35388 字符",
+          "幻觉根因在工具层 · 上下文里的工具目录压掉一半",
         stack: [
           "MCP",
           "LLM tool-calling",
@@ -1221,14 +1233,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "构建了基础设施问答智能体:LLM 通过 tool-calling 调用台账与监控系统的 MCP 服务器,答案在机器人里返回。用 15 道对照问题核对数据库事实,仅 6 题如实作答。根因在工具层而非模型:查询 schema 过窄、缺少可靠计数、步数上限过低。工具目录每轮都会重发给模型,于是把描述从 76216 字符压缩到 35388。已在生产运行,团队暂无使用需求。",
+          "可以用大白话问基础设施的智能体。LLM 通过 tool-calling 调台账和监控的 MCP 服务器，答案发到机器人里。跑了15道对照题，每个答案都跟库里核对。如实的有6道。问题不在模型：查询 schema 太窄，没有可靠计数，步数上限卡死。这些都在工具层，修也在那儿修。工具目录每轮都要发给模型，所以压掉了一半。已在生产。暂时没人用。",
       },
       {
         group: "ai",
         slug: "multi-agent-dev-workflow",
         title: "独立开发的多智能体工作流",
         impact:
-          "3 个智能体 + 对抗式 diff 评审:两次运行留存 13/38、14/32",
+          "三个智能体经 MCP Memory Server 协作，对抗式 diff 评审：38留13,32留14",
         stack: [
           "Claude",
           "MCP",
@@ -1238,16 +1250,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Knowledge graph",
         ],
         summary:
-          "为单人开发复杂系统搭建多智能体工作流:三个智能体(战略顾问 · 知识库管理员 · IDE 开发者)经 MCP Memory Server 通信。第二条回路对自身 diff 做对抗式评审:多个独立视角提问,两个证伪智能体逐条尝试推翻。两次运行留存 13/38、14/32,确认仅代表无人推翻,无外部验证。",
+          "复杂系统我一个人扛，就在身边搭了三个智能体：战略、知识库管理、IDE 里的开发。它们经 MCP Memory Server 通信。第二轮加了对自己 diff 的对抗式评审：先几个独立视角看，再由两个怀疑者逐条推翻。两次跑下来，38条留13条，32条留14条。“确认”在这里的意思是“没能推翻”。没有外部验证。",
       },
       {
         group: "ai",
         slug: "llm-call-analysis-bi-crm",
         title: "LLM 通话分析与 BI / CRM 流水线",
-        impact: "虚拟 PBX 数据进入 BI,GPT-4 自动审听通话",
+        impact:
+          "Python 导出接进 BI，GPT-4 自动分析通话并回写 CRM",
         stack: ["Asterisk", "FreePBX", "MikoPBX", "Megafon PBX", "Python", "ChatGPT API"],
         summary:
-          "运维企业 PBX 与 Megafon 虚拟 PBX,优化通信与互联网成本。开发 Python 导出脚本将数据接入 BI 系统,集成 GPT-4 自动分析通话内容并将报告写回 CRM。",
+          "企业 PBX 和运营商虚拟 PBX 都归我运维。顺手把通信费也压下来了。统计用 Python 导出，接进 BI。通话交给 GPT-4 分析，报告直接进 CRM，发给主管。",
       },
     ],
     timeline: [
@@ -1258,9 +1271,9 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2023 年 10 月 — 至今",
         location: "莫斯科",
         highlights: [
-          "企业级基础设施现代化:Linux 栈重构、跨三国的 AD 林、VMware 体系。",
+          "企业级基础设施现代化：Linux 栈重构、跨三国的 AD 林、VMware 体系。",
           "负责全网的基础设施台账、生产监控与内部服务访问。",
-          "运维自动化:GitLab CI 流水线、测试驱动开发、故障复盘。",
+          "运维自动化：GitLab CI 流水线、测试驱动开发、故障复盘。",
         ],
       },
       {
@@ -1270,8 +1283,8 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2024 — 至今",
         location: "莫斯科",
         highlights: [
-          "从零设计并搭建企业基础设施:AD、Exchange + DAG。",
-          "WireGuard + GRE + OSPF + FRR 的多站点路由,MikroTik RouterOS 7。",
+          "从零设计并搭建企业基础设施：AD、Exchange + DAG。",
+          "WireGuard + GRE + OSPF + FRR 的多站点路由，MikroTik RouterOS 7。",
           "PMG + HAProxy SNI 路由的邮件链路。",
           "ACME → Exchange 证书自动化流水线。与主职并行。",
         ],
@@ -1283,14 +1296,14 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2021 年 6 月 — 2023 年 9 月",
         location: "索契",
         highlights: [
-          "全权负责 IT 职能:预算、供应商、采购、合同。",
+          "全权负责 IT 职能：预算、供应商、采购、合同。",
           "高可用 RDS 农场、FSLogix、虚拟 PBX,基于 MikroTik / TP-Link / UniFi 的内部网络。",
           "办公室与数据中心间的站点间 IPSec VPN,基于 MikroTik 与 OpenVPN 的数据中心链路。",
-          "跨两国的基础设施:两个数据中心与 4 个远程办公室。",
+          "跨两国的基础设施：两个数据中心与 4 个远程办公室。",
           "Hyper-V → ESXi 迁移、ESXi 5 → 6.7 升级、vCenter 7 部署、三站点分布式 Veeam。",
           "AD 从 Windows Server 2008 升级到 2022,域合并。",
           "部署并运维 MS Exchange、WSUS、Zabbix、OpenVPN、Nextcloud、WTware 瘦终端。",
-          "Python 自动化与基于 GPT-4 的通话分析,报告写回 CRM。",
+          "Python 自动化与基于 GPT-4 的通话分析，报告写回 CRM。",
           "互联网接入成本下降约 66%。",
           "指导三名分布于远程办公室的系统管理员。",
         ],
@@ -1305,10 +1318,10 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "设计并运维约 15 台裸金属服务器上的高可用 VMware 集群(vSphere 6.7–7)。",
           "基于 vCloud Director 的私有云与分布式备份系统。",
           "Windows 与 Linux:CentOS、Ubuntu Server、Debian;Hyper-V、ESXi、Proxmox。",
-          "网络:MikroTik、Eltex、Ubiquiti、TP-Link Enterprise;VLAN、RADIUS、WLAN、ACL;基于 pfSense / OPNsense / MikroTik 的 VPN。",
+          "网络：MikroTik、Eltex、Ubiquiti、TP-Link Enterprise;VLAN、RADIUS、WLAN、ACL;基于 pfSense / OPNsense / MikroTik 的 VPN。",
           "Zabbix(服务端 + 代理)、Grafana、Veeam B&R、配置自动备份。",
           "1C 服务器版、MS Exchange 2016–2019(DAG)、MailCow、MikoPBX、Asterisk、FreePBX。",
-          "文档:SOP、runbook、DRP、技术规格。任务分配与初级同事指导。",
+          "文档：SOP、runbook、DRP、技术规格。任务分配与初级同事指导。",
         ],
       },
       {
@@ -1318,9 +1331,9 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2015 — 2018",
         location: "叶卡捷琳堡",
         highlights: [
-          "自营电商「Gift66」— 叶卡捷琳堡的礼品与礼品卡。",
-          "全生命周期:启动、营销推广、最终结束。",
-          "与工程工作并行运营:P&L、营销、运营。由此具备从业务视角理解 IT 需求的能力,而不仅停留在工单层面。",
+          "自营电商“Gift66”：叶卡捷琳堡的礼品与礼品卡。",
+          "全生命周期：启动、营销推广、最终结束。",
+          "与工程工作并行运营：P&L、营销、运营。由此具备从业务视角理解 IT 需求的能力，而不仅停留在工单层面。",
         ],
       },
       {
@@ -1330,7 +1343,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         period: "2014 — 2017",
         location: "叶卡捷琳堡",
         highlights: [
-          "从外包入职俄罗斯顶级 IT 公司之一,担任内部工程师。",
+          "从外包入职俄罗斯顶级 IT 公司之一，担任内部工程师。",
           "在生产级产品环境中负责企业级工程任务。",
         ],
       },
@@ -1342,7 +1355,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         location: "叶卡捷琳堡",
         highlights: [
           "客户包括 MTV 电视频道(后更名为 Pyatnitsa)与多家广播电台。",
-          "广泛的故障排查范围:基础设施、网络、电话系统、终端用户支持。",
+          "广泛的故障排查范围：基础设施、网络、电话系统、终端用户支持。",
         ],
       },
     ],
@@ -1353,15 +1366,15 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         role: "DevOps Engineer Pro 课程",
         period: "持续教育",
         highlights: [
-          "容器化:Docker、Docker Compose。",
-          "编排:Kubernetes。",
-          "基础设施即代码:Terraform、Ansible。",
+          "容器化：Docker、Docker Compose。",
+          "编排：Kubernetes。",
+          "基础设施即代码：Terraform、Ansible。",
           "CI / CD:GitLab CI、GitHub Actions。",
           "云、监控、SRE 实践。",
         ],
       },
     ],
-    contactFormat: "仅远程协作,不接受驻场或出差。",
+    contactFormat: "仅远程协作，不接受驻场或出差。",
     contactLocation: "莫斯科 · UTC+3",
     sectionTitles: {
       projectsEyebrow: "精选案例",
@@ -1371,12 +1384,12 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
       educationEyebrow: "课程",
       contactEyebrow: "联系",
       contactTitle:
-        "如果您正在寻找能把复杂基础设施落地到生产环境并长期运维的架构师,或正为出海俄罗斯市场的中国企业物色本地化技术合作方,欢迎直接联系。",
+        "如果您正在寻找能把复杂基础设施落地到生产环境并长期运维的架构师，或正为出海俄罗斯市场的中国企业物色本地化技术合作方，欢迎直接联系。",
     },
     meta: {
       title: "Oleg Tempalov — IT 基础设施架构师 · 中俄技术对接",
       description:
-        "IT 基础设施架构师,12+ 年俄罗斯企业经验。助力中国企业出海俄罗斯:基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。仅远程协作。",
+        "IT 基础设施架构师，12+ 年俄罗斯企业经验。助力中国企业出海俄罗斯：基础设施搭建、数据本地化合规(152-ФЗ)与跨境技术对接。仅远程协作。",
     },
   },
 };

@@ -10,10 +10,10 @@ export function StackSection({ locale, content }: Props) {
   const eyebrow = locale === "ru" ? "Стек" : locale === "zh" ? "技术栈" : "Stack";
   const note =
     locale === "ru"
-      ? "Всё, с чем работал в проде. Не список из резюме — то, что реально поднимал и поддерживал."
+      ? "Всё, с чем работал в проде. Не список из резюме, а то, что реально поднимал и поддерживал."
       : locale === "zh"
-        ? "全部在生产环境中实际使用过的技术 —— 并非简历里的清单,而是真正搭建并维护过的东西。"
-        : "Everything I have run in production — not a résumé list, but what I actually built and maintained.";
+        ? "全部在生产环境中实际使用过的技术。不是简历里的清单，而是真正搭建并维护过的东西。"
+        : "Everything I have run in production. Not a résumé list, but what I actually built and maintained.";
 
   return (
     <section id="stack" className="block">

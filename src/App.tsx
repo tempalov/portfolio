@@ -20,7 +20,7 @@ function App({ locale, route = { kind: "home" } }: Props) {
     locale === "ru"
       ? "Собрано на React + Vite, упаковано в Docker, крутится на VK Cloud за angie."
       : locale === "zh"
-        ? "基于 React + Vite 构建,Docker 打包,经 angie 反向代理运行在 VK Cloud。"
+        ? "基于 React + Vite 构建，Docker 打包，经 angie 反向代理运行在 VK Cloud。"
         : "Built with React + Vite, shipped in Docker, running on VK Cloud behind angie.";
 
   return (
