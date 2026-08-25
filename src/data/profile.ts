@@ -272,7 +272,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "active-directory-gpo-audit",
         title: "Гигиена Active Directory: аудит и починка GPO",
         impact:
-          "Аудит и починка GPO и ACL на сотнях политик, поэтапно и с путём отката на каждом шаге",
+          "Аудит и починка GPO и ACL в лесу на ~23 тысячи учёток, поэтапно и с путём отката на каждом шаге",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -282,17 +282,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "Лес большой и старый. Политики в нём десятилетиями правили разные люди. Написал 17 PowerShell-скриптов: найти битые, восстановить Security Filtering после массового даунгрейда на Authenticated Users, вычистить мёртвые NetLogon ACE. Каждый прогон начинается с pre-flight, дальше три фазы, на каждом шаге бэкап и путь отката. Сотни GPO. Ни одного изменения вслепую.",
+          "Лес на семь доменов и примерно 23 тысячи активных учёток, политики в нём десятилетиями правили разные люди. Написал 17 PowerShell-скриптов: найти битые, восстановить Security Filtering после массового даунгрейда на Authenticated Users, вычистить мёртвые NetLogon ACE. Каждый прогон начинается с pre-flight, дальше три фазы, на каждом шаге бэкап и путь отката. Сотни GPO. Ни одного изменения вслепую.",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Модернизация Active Directory",
         impact:
-          "Windows Server 2008 → 2022, три страны, мульти-сайт репликация, слияние доменов",
+          "Лес на ~23 тысячи активных учёток: Windows Server 2008 → 2022, семь доменов свёл в одну структуру",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "Windows Server 2008 в проде, несколько доменов, репликация как повезёт. Перевёл лес на актуальную версию и единую структуру. Роли разложил по трём площадкам, объекты из нескольких доменов свёл в один. Репликация стала предсказуемой. Это, собственно, и было целью.",
+          "Лес на семь доменов и примерно 23 тысячи активных учёток, в проде Windows Server 2008, репликация как повезёт. Перевёл на актуальную версию и единую структуру. Роли разложил по трём площадкам, объекты из нескольких доменов свёл в один. Репликация стала предсказуемой. Это, собственно, и было целью.",
       },
       {
         group: "infra",
@@ -710,7 +710,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "active-directory-gpo-audit",
         title: "Active Directory hygiene: GPO repair",
         impact:
-          "GPO and ACL audit and repair across hundreds of policies, phased, with a rollback path at every step",
+          "GPO and ACL audit and repair in a ~23,000-account forest, phased, with a rollback path at every step",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -720,17 +720,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "Big forest, inherited. Different people had been editing its policies for decades. I wrote 17 PowerShell scripts: find the broken ones, restore Security Filtering after a mass downgrade to Authenticated Users, clear out dead NetLogon ACEs. Every run starts with a pre-flight, then three phases, with a backup and a rollback path at each step. Hundreds of GPOs. Not one blind change.",
+          "Seven domains, roughly 23,000 active accounts, and policies different people had been editing for decades. I wrote 17 PowerShell scripts: find the broken ones, restore Security Filtering after a mass downgrade to Authenticated Users, clear out dead NetLogon ACEs. Every run starts with a pre-flight, then three phases, with a backup and a rollback path at each step. Hundreds of GPOs. Not one blind change.",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Active Directory modernization",
         impact:
-          "Windows Server 2008 → 2022, three countries, multi-site replication, merged domains",
+          "A forest of ~23,000 active accounts: Windows Server 2008 → 2022, seven domains into one structure",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "Windows Server 2008 in production, several domains, replication whenever it felt like it. I moved the forest onto a current version, one structure. Roles went out across three sites. Objects from several domains came into one. Replication became predictable. That was the whole point.",
+          "Seven domains, roughly 23,000 active accounts, Windows Server 2008 in production, replication whenever it felt like it. I moved the forest onto a current version, one structure. Roles went out across three sites. Objects from several domains came into one. Replication became predictable. That was the whole point.",
       },
       {
         group: "infra",
@@ -1148,7 +1148,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
         slug: "active-directory-gpo-audit",
         title: "AD 治理：GPO 审计与修复",
         impact:
-          "数百条 GPO 与 ACL 的审计修复，分阶段推进，每步可回滚",
+          "在约2.3万账户的林中审计并修复 GPO 与 ACL，分阶段推进，每步可回滚",
         stack: [
           "PowerShell",
           "Active Directory",
@@ -1158,17 +1158,17 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "Security Filtering",
         ],
         summary:
-          "林很大，是接手来的。里面的策略几十年里被不同的人改过。写了17个 PowerShell 脚本：找出坏掉的策略，修回被批量降到 Authenticated Users 的 Security Filtering，清掉失效的 NetLogon ACE。每次跑先做预检，再分三个阶段。每步都有备份和回滚路径。几百条 GPO。没有一次是盲改。",
+          "七个域、约2.3万个活动账户的林，里面的策略几十年里被不同的人改过。写了17个 PowerShell 脚本：找出坏掉的策略，修回被批量降到 Authenticated Users 的 Security Filtering，清掉失效的 NetLogon ACE。每次跑先做预检，再分三个阶段。每步都有备份和回滚路径。几百条 GPO。没有一次是盲改。",
       },
       {
         group: "infra",
         slug: "active-directory-modernization",
         title: "Active Directory 现代化",
         impact:
-          "Windows Server 2008 → 2022，三个国家，多站点复制，多域合并",
+          "约2.3万个活动账户的林：Windows Server 2008 → 2022，七个域并为一套结构",
         stack: ["Active Directory", "Windows Server", "DNS", "DHCP", "Sites & Replication"],
         summary:
-          "生产上跑着 Windows Server 2008，好几个域，复制看运气。把林升到当前版本，结构统一。角色分到三个站点，多个域的对象合并成一个。复制变得可预期。这本来就是目的。",
+          "七个域、约2.3万个活动账户的林，生产上跑着 Windows Server 2008，复制看运气。把林升到当前版本，结构统一。角色分到三个站点，多个域的对象合并成一个。复制变得可预期。这本来就是目的。",
       },
       {
         group: "infra",
