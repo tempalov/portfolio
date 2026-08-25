@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Send } from "lucide-react";
 import type { Locale, ProfileBundle } from "../data/profile";
 import { CASE_ICONS } from "../lib/caseIcons";
 import { casePath, homePath } from "../lib/routes";
@@ -16,6 +16,7 @@ const L = {
     stack: "Стек",
     others: "Другие кейсы",
     cta: "Обсудить похожую задачу",
+    tg: "или в Telegram",
     home: "Главная",
     cases: "Кейсы",
   },
@@ -25,6 +26,7 @@ const L = {
     stack: "Stack",
     others: "Other work",
     cta: "Discuss a similar problem",
+    tg: "or on Telegram",
     home: "Home",
     cases: "Work",
   },
@@ -34,6 +36,7 @@ const L = {
     stack: "技术栈",
     others: "其他案例",
     cta: "沟通类似需求",
+    tg: "或用 Telegram",
     home: "首页",
     cases: "案例",
   },
@@ -117,9 +120,22 @@ export function CasePage({ locale, content, slug }: Props) {
           <ArrowLeft size={15} strokeWidth={2} aria-hidden="true" />
           {t.back}
         </a>
-        <a className="case-page-cta" href={`mailto:${content.profile.email}`}>
-          {t.cta}
-        </a>
+        {/* Два канала, а не один: до почты доходят не все, а Telegram у этой
+            аудитории открыт всегда. Второй ссылкой, чтобы не спорить с первой. */}
+        <div className="case-page-contacts">
+          <a className="case-page-cta" href={`mailto:${content.profile.email}`}>
+            {t.cta}
+          </a>
+          <a
+            className="case-page-tg"
+            href={content.profile.telegram}
+            target="_blank"
+            rel="me noopener noreferrer"
+          >
+            <Send size={15} strokeWidth={1.75} aria-hidden="true" />
+            {t.tg}
+          </a>
+        </div>
       </footer>
     </article>
   );

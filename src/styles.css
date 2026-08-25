@@ -1107,3 +1107,25 @@ svg {
     padding: var(--section-pad-mobile) 0;
   }
 }
+
+/* Два канала связи в футере кейса. Почта — основное действие, Telegram —
+   равнодоступная альтернатива: настойчивее кнопки быть не должен, но и
+   прятать его в мелкий текст незачем. */
+.case-page-contacts {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.case-page-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.case-page-tg:hover {
+  color: var(--accent);
+}
