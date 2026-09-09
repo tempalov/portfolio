@@ -107,6 +107,20 @@
 <!--work:start-->
 <!--work:end-->
 
+    <h2>Open source</h2>
+    <ul>
+      <li>
+        <strong>netbox-sync — upstream fix, merged</strong> — diagnosed and patched a crash
+        in netbox-sync 1.8.0: a VLAN whose group stayed an unresolved API dictionary instead
+        of an <code>NBVLANGroup</code> made <code>source.apply()</code> raise, so a failing
+        run wrote nothing to NetBox at all. Fix guards the call with an
+        <code>isinstance</code> check and falls back to site/global VLAN matching. Reported
+        as <a href="https://github.com/bb-Ricardo/netbox-sync/issues/529">issue #529</a>, submitted as
+        <a href="https://github.com/bb-Ricardo/netbox-sync/pull/530">PR #530</a>, merged into the development branch on 9 September 2026.
+        Not yet in a tagged release.
+      </li>
+    </ul>
+
     <h2>Availability</h2>
     <p>
       Open to Infrastructure Architect, Solutions Architect and Head of Infrastructure roles. Remote, full-time or long-term contract. Also

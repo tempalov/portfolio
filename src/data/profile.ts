@@ -157,7 +157,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "Инфраструктура крупной розничной сети жила в таблицах, которые никто не сверял. Собрал учёт на NetBox: ~2400 площадок, ~8900 устройств. Двенадцать таймеров тянут данные из учётных систем, сверяют, пишут обратно, проверяют качество. Опрос сетевого оборудования уходит в отдельную ветку, и сливаю её руками. Автоматика ничего не удаляет. Это правило, а не настройка. Репозиторий на GitLab CI, 841 зелёный тест.",
+          "Инфраструктура крупной розничной сети жила в таблицах, которые никто не сверял. Собрал учёт на NetBox: ~2400 площадок, ~8900 устройств. Двенадцать таймеров тянут данные из учётных систем, сверяют, пишут обратно, проверяют качество. Опрос сетевого оборудования уходит в отдельную ветку, и сливаю её руками. Автоматика ничего не удаляет. Это правило, а не настройка. Репозиторий на GitLab CI, 841 зелёный тест. Фикс в самом netbox-sync ушёл в апстрим.",
       },
       {
         group: "infra",
@@ -595,7 +595,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "A large retail chain ran its infrastructure out of spreadsheets nobody reconciled. I built the inventory on NetBox: ~2,400 sites, ~8,900 devices. Twelve systemd timers pull from the source systems, reconcile, write back, check quality. Network discovery lands in a separate branch. I merge that one by hand. Automation deletes nothing. That's a rule, not a setting. GitLab CI on the repo, 841 green tests.",
+          "A large retail chain ran its infrastructure out of spreadsheets nobody reconciled. I built the inventory on NetBox: ~2,400 sites, ~8,900 devices. Twelve systemd timers pull from the source systems, reconcile, write back, check quality. Network discovery lands in a separate branch. I merge that one by hand. Automation deletes nothing. That's a rule, not a setting. GitLab CI on the repo, 841 green tests. Fix merged upstream.",
       },
       {
         group: "infra",
@@ -1033,7 +1033,7 @@ export const profileByLocale: Record<Locale, ProfileBundle> = {
           "GitLab CI",
         ],
         summary:
-          "大型零售连锁的基础设施都散在表格里，没人核对。我用 NetBox 建了台账：约2400个站点，约8900台设备。12个定时器从各系统取数、比对、回写、查质量。网络设备的轮询结果进独立分支，由我手工合并。自动化不删任何东西。这是规矩，不是配置项。仓库跑 GitLab CI，841个测试全绿。",
+          "大型零售连锁的基础设施都散在表格里，没人核对。我用 NetBox 建了台账：约2400个站点，约8900台设备。12个定时器从各系统取数、比对、回写、查质量。网络设备的轮询结果进独立分支，由我手工合并。自动化不删任何东西。这是规矩，不是配置项。仓库跑 GitLab CI，841个测试全绿。向 netbox-sync 上游提交的修复已被合并。",
       },
       {
         group: "infra",
